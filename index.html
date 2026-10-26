@@ -295,22 +295,18 @@ html,body{background:#090d18}
 .bottom-nav{justify-content:space-between;gap:0;padding-left:6px;padding-right:6px}
 .bottom-nav .nav-item{flex:1 1 0;min-width:0;max-width:96px;padding:9px 2px 8px;font-size:10.5px;letter-spacing:0;white-space:nowrap}
 .bottom-nav .nav-item span{font-size:10.5px}
-.bottom-nav .nav-add{flex:0 0 auto;width:58px;height:48px;max-width:none;padding:0;border-radius:16px;background:linear-gradient(135deg,#6a8bff,#4564e8);color:#fff!important;display:grid;place-items:center;box-shadow:0 8px 22px rgba(69,100,232,.5),inset 0 1px 0 rgba(255,255,255,.28);margin:0 4px}
-.bottom-nav .nav-add:before,.bottom-nav .nav-add:after{display:none!important}
-.bottom-nav .nav-add svg{width:27px;height:27px;stroke-width:2.1}
-.bottom-nav .nav-add:hover{color:#fff!important}
-@media(max-width:380px){.bottom-nav .nav-item,.bottom-nav .nav-item span{font-size:9.5px}.bottom-nav .nav-add{width:54px;margin:0 2px}}
+@media(max-width:380px){.bottom-nav .nav-item,.bottom-nav .nav-item span{font-size:9.5px}}
 
 /* ===== v2.7.0 — Menu bawah: penanda pil hanya di belakang ikon, ada jarak ke tulisan, pil melebar dari tengah ===== */
-.bottom-nav .nav-item:not(.nav-add){gap:8px!important;padding:8px 2px 6px!important;transform:none!important;border-radius:0!important;background:none!important;border:0!important}
-.bottom-nav .nav-item:not(.nav-add) svg{position:relative;z-index:1;width:22px;height:22px;flex:none;filter:none!important}
-.bottom-nav .nav-item:not(.nav-add):before{content:''!important;display:block!important;position:absolute!important;inset:auto!important;top:4px!important;left:50%!important;width:58px!important;height:30px!important;margin-left:-29px!important;border:0!important;border-radius:16px!important;background:#2c479a!important;z-index:0!important;opacity:0!important;transform:scaleX(.3)!important;transition:transform .24s cubic-bezier(.2,.9,.25,1),opacity .18s ease!important;animation:none!important}
-.bottom-nav .nav-item:not(.nav-add).active:before{opacity:1!important;transform:scaleX(1)!important}
-.bottom-nav .nav-item:not(.nav-add):not(.active):active:before{opacity:1!important;transform:scaleX(.7)!important;background:rgba(255,255,255,.1)!important}
-.bottom-nav .nav-item:not(.nav-add).active:after{display:none!important}
-.bottom-nav .nav-item:not(.nav-add).active{color:#d6e2ff}
-.bottom-nav .nav-item:not(.nav-add).active svg{color:#fff;animation:navIcoIn .34s cubic-bezier(.2,.9,.25,1.2) both!important}
-.bottom-nav .nav-item:not(.nav-add):active svg{transform:scale(.9)!important}
+.bottom-nav .nav-item{gap:8px!important;padding:8px 2px 6px!important;transform:none!important;border-radius:0!important;background:none!important;border:0!important}
+.bottom-nav .nav-item svg{position:relative;z-index:1;width:22px;height:22px;flex:none;filter:none!important}
+.bottom-nav .nav-item:before{content:''!important;display:block!important;position:absolute!important;inset:auto!important;top:4px!important;left:50%!important;width:58px!important;height:30px!important;margin-left:-29px!important;border:0!important;border-radius:16px!important;background:#2c479a!important;z-index:0!important;opacity:0!important;transform:scaleX(.3)!important;transition:transform .24s cubic-bezier(.2,.9,.25,1),opacity .18s ease!important;animation:none!important}
+.bottom-nav .nav-item.active:before{opacity:1!important;transform:scaleX(1)!important}
+.bottom-nav .nav-item:not(.active):active:before{opacity:1!important;transform:scaleX(.7)!important;background:rgba(255,255,255,.1)!important}
+.bottom-nav .nav-item.active:after{display:none!important}
+.bottom-nav .nav-item.active{color:#d6e2ff}
+.bottom-nav .nav-item.active svg{color:#fff;animation:navIcoIn .34s cubic-bezier(.2,.9,.25,1.2) both!important}
+.bottom-nav .nav-item:active svg{transform:scale(.9)!important}
 @keyframes navIcoIn{0%{transform:translateY(3px) scale(.82)}60%{transform:translateY(-1px) scale(1.1)}100%{transform:none}}
 @media(prefers-reduced-motion:reduce){#splash,#splash *{animation:none!important;transition:none!important}#splash .sp-text strong,#splash .sp-text span{opacity:1!important}}
 
@@ -372,6 +368,24 @@ html,body{background:#090d18}
 .dd-item.click:active{transform:scale(.985)}
 @media(max-width:600px){.dd-crumb{padding:7px 7px;font-size:11.5px;gap:3px}.dd-crumbs{gap:4px;flex-wrap:nowrap}.dd-crumb i{font-size:11px}}
 @media(max-width:380px){.dd-crumb{padding:7px 5px;font-size:11px}.dd-crumbs{gap:3px}.dd-ihead strong{font-size:14.5px}}
+/* ===== v2.8.4 — Menu bawah: kelima menu sama besar, penanda aktif berupa kotak sudut tumpul seperti tab Growth/Balance/Profit.
+   Hanya kotaknya yang beranimasi (naik saat hover, mengecil saat ditekan); ikon dan tulisan tidak ikut bergerak. ===== */
+.bottom-nav .nav-item:before,.bottom-nav .nav-item:after,.bottom-nav .nav-item.active:before,.bottom-nav .nav-item.active:after{display:none!important;content:none!important}
+.bottom-nav .nav-item{flex:1 1 0!important;min-width:0!important;max-width:none!important;width:auto!important;height:54px!important;align-self:center!important;margin:0 3px!important;padding:0 2px!important;gap:4px!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;border-radius:14px!important;border:1px solid transparent!important;background:transparent!important;box-shadow:none!important;color:#74809b;transform:none!important;transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s ease,border-color .25s ease,box-shadow .25s ease,color .2s ease!important}
+.bottom-nav .nav-item svg,.bottom-nav .nav-add svg{width:24px!important;height:24px!important;margin:0!important;flex:none;animation:none!important;filter:none!important;transform:none!important;transition:none!important}
+.bottom-nav .nav-item span{font-size:10.5px;line-height:1.1}
+.bottom-nav .nav-item:hover{transform:translateY(-2px)!important;border-color:#2c3c66!important;box-shadow:0 8px 20px #5b7fff2b!important}
+.bottom-nav .nav-item.active{background:#1d2c57!important;border-color:#4a68c8!important;box-shadow:0 0 0 1px #4a68c8,0 6px 18px #1d2c5766!important;color:#fff}
+.bottom-nav .nav-item.active svg{color:#fff}
+.bottom-nav .nav-item.active:hover{box-shadow:0 0 0 1px #4a68c8,0 8px 20px #5b7fff2b!important}
+.bottom-nav .nav-item:active{transform:scale(.95)!important}
+@media(max-width:380px){.bottom-nav .nav-item{margin:0 2px!important}.bottom-nav .nav-item span{font-size:9.5px}}
+/* halaman Tambah trade: gaya kolom form sama seperti saat masih berbentuk pop up */
+.add-page textarea{display:block;width:100%;min-height:70px;resize:vertical;margin-top:6px;background:#0c1322;border:1px solid #26334e;color:#edf2ff;border-radius:9px;padding:10px 11px;outline:none;font-family:inherit;font-size:13px}
+.add-page textarea:focus{border-color:#597cff}
+.add-page form>label{display:block;color:#9aa8c0;font-size:10px}
+.add-page label{margin-bottom:13px}
+.add-page input[type=number]{font-family:'DM Mono',monospace}
 </style>
 </head>
 <body>
@@ -420,7 +434,7 @@ window.__hideSplash=function(){
 window.addEventListener("error",function(e){var b=document.getElementById("boot");if(b&&!window.__appMounted)b.textContent="Error: "+e.message;});
 "use strict";
 const { useEffect, useMemo, useRef, useState } = React;
-const APP_VERSION = '2.8.1';
+const APP_VERSION = '2.8.4';
 const ICONS = { "CandlePlus": [["path", { "d": "M5 3v3" }], ["rect", { "x": 3, "y": 6, "width": 4, "height": 11, "rx": 1 }], ["path", { "d": "M5 17v3" }], ["path", { "d": "M12 8v2" }], ["rect", { "x": 10, "y": 10, "width": 4, "height": 7, "rx": 1 }], ["path", { "d": "M12 17v2" }], ["path", { "d": "M19 3v6" }], ["path", { "d": "M16 6h6" }]], "Activity": [["polyline", { "points": "22 12 18 12 15 21 9 3 6 12 2 12" }]], "ArrowDownRight": [["path", { "d": "M7 7l10 10" }], ["path", { "d": "M17 7v10H7" }]], "ArrowUpRight": [["path", { "d": "M7 17L17 7" }], ["path", { "d": "M7 7h10v10" }]], "BarChart3": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M18 17V9" }], ["path", { "d": "M13 17V5" }], ["path", { "d": "M8 17v-3" }]], "BookOpen": [["path", { "d": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" }], ["path", { "d": "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" }]], "CalendarDays": [["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M16 2v4" }], ["path", { "d": "M8 2v4" }], ["path", { "d": "M3 10h18" }], ["path", { "d": "M8 14h.01" }], ["path", { "d": "M12 14h.01" }], ["path", { "d": "M16 14h.01" }], ["path", { "d": "M8 18h.01" }], ["path", { "d": "M12 18h.01" }], ["path", { "d": "M16 18h.01" }]], "Camera": [["path", { "d": "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z" }], ["circle", { "cx": 12, "cy": 13, "r": 3 }]], "ChevronDown": [["path", { "d": "M6 9l6 6 6-6" }]], "ChevronLeft": [["path", { "d": "M15 18l-6-6 6-6" }]], "ChevronRight": [["path", { "d": "M9 18l6-6-6-6" }]], "CircleHelp": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["path", { "d": "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }], ["path", { "d": "M12 17h.01" }]], "ClipboardPaste": [["path", { "d": "M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1z" }], ["path", { "d": "M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" }]], "Cloud": [["path", { "d": "M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z" }]], "Download": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M7 10l5 5 5-5" }], ["path", { "d": "M12 15V3" }]], "FileJson": [["path", { "d": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" }], ["path", { "d": "M14 2v6h6" }], ["path", { "d": "M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1" }], ["path", { "d": "M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1" }]], "Filter": [["path", { "d": "M22 3H2l8 9.46V19l4 2v-8.54z" }]], "LineChart": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M19 9l-5 5-4-4-3 3" }]], "Plus": [["path", { "d": "M5 12h14" }], ["path", { "d": "M12 5v14" }]], "Search": [["circle", { "cx": 11, "cy": 11, "r": 8 }], ["path", { "d": "M21 21l-4.3-4.3" }]], "Settings2": [["path", { "d": "M20 7h-9" }], ["path", { "d": "M14 17H5" }], ["circle", { "cx": 17, "cy": 17, "r": 3 }], ["circle", { "cx": 7, "cy": 7, "r": 3 }]], "Share2": [["circle", { "cx": 18, "cy": 5, "r": 3 }], ["circle", { "cx": 6, "cy": 12, "r": 3 }], ["circle", { "cx": 18, "cy": 19, "r": 3 }], ["path", { "d": "M8.59 13.51l6.83 3.98" }], ["path", { "d": "M15.41 6.51l-6.82 3.98" }]], "SlidersHorizontal": [["path", { "d": "M21 4h-7" }], ["path", { "d": "M10 4H3" }], ["path", { "d": "M21 12h-9" }], ["path", { "d": "M8 12H3" }], ["path", { "d": "M21 20h-5" }], ["path", { "d": "M12 20H3" }], ["path", { "d": "M14 2v4" }], ["path", { "d": "M8 10v4" }], ["path", { "d": "M16 18v4" }]], "Target": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["circle", { "cx": 12, "cy": 12, "r": 6 }], ["circle", { "cx": 12, "cy": 12, "r": 2 }]], "Trash2": [["path", { "d": "M3 6h18" }], ["path", { "d": "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" }], ["path", { "d": "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" }], ["path", { "d": "M10 11v6" }], ["path", { "d": "M14 11v6" }]], "TrendingDown": [["path", { "d": "M22 17l-8.5-8.5-5 5L2 7" }], ["path", { "d": "M16 17h6v-6" }]], "TrendingUp": [["path", { "d": "M22 7l-8.5 8.5-5-5L2 17" }], ["path", { "d": "M16 7h6v6" }]], "Upload": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M17 8l-5-5-5 5" }], ["path", { "d": "M12 3v12" }]], "UserRound": [["circle", { "cx": 12, "cy": 8, "r": 5 }], ["path", { "d": "M20 21a8 8 0 0 0-16 0" }]], "Wallet": [["path", { "d": "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" }], ["path", { "d": "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" }]], "X": [["path", { "d": "M18 6L6 18" }], ["path", { "d": "M6 6l12 12" }]], "Zap": [["path", { "d": "M13 2L3 14h9l-1 8 10-12h-9l1-8z" }]] };
 function Icon({ name, size = 24, strokeWidth = 2, className, style }) {
     const node = ICONS[name] || [];
@@ -658,7 +672,7 @@ function App() {
     const [showCalendar, setShowCalendar] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
     const [accountMode, setAccountMode] = useState('manage');
-    const [showAdd, setShowAdd] = useState(false);
+    const [prevTab, setPrevTab] = useState('journal');
     const [closingTrade, setClosingTrade] = useState(null);
     const [editingTrade, setEditingTrade] = useState(null);
     const [expanded, setExpanded] = useState(null);
@@ -690,7 +704,9 @@ function App() {
     function recordCapital(data) { const amount = Number(data.amount) || 0; if (amount <= 0)
         return; const delta = data.type === 'withdraw' ? -amount : amount; const updated = accounts.map(a => a.id === activeAccountId ? { ...a, balance: Number(a.balance || 0) + delta, capitalHistory: [...(a.capitalHistory || []), { id: uid('capital'), type: data.type, amount, date: data.date, note: data.note || '' }] } : a); persist(updated); }
     function updateAccount(patch) { persist(accounts.map(a => a.id === activeAccountId ? { ...a, ...patch } : a)); }
-    function addTrade(data) { const trade = { ...data, id: uid('trade'), entry: Number(data.entry), exit: data.exit ? Number(data.exit) : null, lots: Number(data.lots) || 0, sl: data.sl ? Number(data.sl) : null, tp: data.tp ? Number(data.tp) : null, fees: Number(data.fees) || 0, status: data.exit ? 'closed' : 'open', pnl: data.exit ? pnlFor(data, data.exit) : 0, review: data.review || '', screenshots: data.screenshots || [] }; persistTrades([trade, ...trades]); setShowAdd(false); setTab('journal'); }
+    function openAdd() { if (tab !== 'add') setPrevTab(tab); setTab('add'); try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) { } }
+    function closeAdd() { setTab(prevTab && prevTab !== 'add' ? prevTab : 'journal'); }
+    function addTrade(data) { const trade = { ...data, id: uid('trade'), entry: Number(data.entry), exit: data.exit ? Number(data.exit) : null, lots: Number(data.lots) || 0, sl: data.sl ? Number(data.sl) : null, tp: data.tp ? Number(data.tp) : null, fees: Number(data.fees) || 0, status: data.exit ? 'closed' : 'open', pnl: data.exit ? pnlFor(data, data.exit) : 0, review: data.review || '', screenshots: data.screenshots || [] }; persistTrades([trade, ...trades]); setTab('journal'); }
     function closeTrade(data) { const trade = trades.find(t => t.id === data.tradeId); if (!trade)
         return; const updated = { ...trade, exit: Number(data.exit), closeDate: data.closeDate, fees: Number(data.fees) || 0, exitMethod: data.exitMethod, status: 'closed', pnl: pnlFor({ ...trade, fees: Number(data.fees) || 0 }, Number(data.exit)), review: data.review || '' }; persistTrades(trades.map(t => t.id === trade.id ? updated : t)); setClosingTrade(null); setExpanded(trade.id); }
     function updateTrade(data) { const old = trades.find(t => t.id === data.id); if (!old)
@@ -741,16 +757,16 @@ function App() {
                     React.createElement("small", null, money(activeAccount.balance, activeAccount.currency)))),
             React.createElement("main", { className: "main-content" },
                 tab === 'performance' && React.createElement(Performance, { onSelectDate: chooseCalendarDate, onWallet: () => { setAccountMode('capital'); setShowAccount(true); }, account: activeAccount, trades: trades, period: period, setPeriod: setPeriod, customStart: customStart, customEnd: customEnd, setCustomStart: setCustomStart, setCustomEnd: setCustomEnd }),
-                tab === 'journal' && React.createElement(Journal, { account: activeAccount, trades: trades, filters: journalFilters, setFilters: setJournalFilters, expanded: expanded, setExpanded: setExpanded, onAdd: () => setShowAdd(true), onDelete: deleteTrade, onClose: setClosingTrade, onEdit: setEditingTrade }),
-                tab === 'account' && React.createElement(AccountPage, { account: activeAccount, trades: trades, onManage: mode => { setAccountMode(mode); setShowAccount(true); } }),
-                tab === 'tools' && React.createElement(Tools, { account: activeAccount, trades: trades, onAdd: () => setShowAdd(true), onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson, onNewAccount: () => setShowAccount(true) }))),
+                tab === 'journal' && React.createElement(Journal, { account: activeAccount, trades: trades, filters: journalFilters, setFilters: setJournalFilters, expanded: expanded, setExpanded: setExpanded, onAdd: openAdd, onDelete: deleteTrade, onClose: setClosingTrade, onEdit: setEditingTrade }),
+                tab === 'account' && React.createElement(AccountPage, { account: activeAccount, trades: trades, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson, onManage: mode => { setAccountMode(mode); setShowAccount(true); } }),
+                tab === 'add' && React.createElement(AddTradePage, { key: activeAccount.id, account: activeAccount, onClose: closeAdd, onSave: addTrade }),
+                tab === 'tools' && React.createElement(Tools, { account: activeAccount, trades: trades, onAdd: openAdd, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson, onNewAccount: () => setShowAccount(true) }))),
         React.createElement("nav", { className: "bottom-nav" },
             React.createElement(NavItem, { active: tab === 'performance', onClick: () => setTab('performance'), icon: React.createElement(BarChart3, null), label: "Performance" }),
             React.createElement(NavItem, { active: tab === 'journal', onClick: () => setTab('journal'), icon: React.createElement(BookOpen, null), label: "My Journal" }),
-            React.createElement("button", { type: "button", className: "nav-item nav-add", "aria-label": "Tambah posisi", onClick: () => setShowAdd(true) }, React.createElement(CandlePlus, null)),
+            React.createElement("button", { type: "button", className: tab === 'add' ? 'nav-item nav-add active' : 'nav-item nav-add', "aria-label": "Tambah posisi", "aria-current": tab === 'add' ? 'page' : undefined, onClick: openAdd }, React.createElement(CandlePlus, null)),
             React.createElement(NavItem, { active: tab === 'tools', onClick: () => setTab('tools'), icon: React.createElement(SlidersHorizontal, null), label: "Tools" }),
             React.createElement(NavItem, { active: tab === 'account', onClick: () => setTab('account'), icon: React.createElement(UserRound, null), label: "Akun" })),
-        showAdd && React.createElement(AddTradeModal, { account: activeAccount, onClose: () => setShowAdd(false), onSave: addTrade }),
         editingTrade && React.createElement(AddTradeModal, { initial: editingTrade, account: activeAccount, onClose: () => setEditingTrade(null), onSave: updateTrade }),
         closingTrade && React.createElement(CloseTradeModal, { trade: closingTrade, onClose: () => setClosingTrade(null), onSave: closeTrade }),
         showAccount && React.createElement(AccountModal, { initialMode: accountMode, accounts: accounts, activeAccount: activeAccount, onClose: () => { setShowAccount(false); setAccountMode('manage'); }, onSelect: selectAccount, onCreate: addAccount, onDelete: deleteAccount, onUpdate: updateAccount, onCapital: recordCapital, onBackup: backupJson, onRestore: restoreJson, onExport: exportCsv }),
@@ -759,12 +775,11 @@ function App() {
 function NavItem({ active, onClick, icon, label }) { return React.createElement("button", { type: "button", className: active ? 'nav-item active' : 'nav-item', "aria-current": active ? 'page' : undefined, onClick: onClick },
     icon,
     React.createElement("span", null, label)); }
-function AccountPage({ account, trades, onManage }) {
+function AccountPage({ account, trades, onManage, onExport, onBackup, onRestore }) {
     const btn = (label, mode) => React.createElement("button", { className: "secondary-btn", onClick: () => onManage(mode) }, label);
     return React.createElement("section", null,
-        React.createElement(PageHeading, { eyebrow: "PROFIL / PENGATURAN", title: "Akun", description: "Profil, sinkron online, dan akun trading Anda." }),
+        React.createElement(PageHeading, { eyebrow: "PROFIL / PENGATURAN", title: "Akun", description: "Akun trading, sinkron online, backup, dan export." }),
         React.createElement("div", { className: "tool-grid" },
-            React.createElement(CloudSyncCard, null),
             React.createElement("div", { className: "tool-card" },
                 React.createElement("div", { className: "tool-head" },
                     React.createElement("div", { className: "tool-icon orange" }, React.createElement(UserRound, null)),
@@ -773,7 +788,36 @@ function AccountPage({ account, trades, onManage }) {
                         React.createElement("p", null, `${account.name} · ${money(account.balance, account.currency)} · ${trades.length} trade`))),
                 React.createElement("div", { className: "button-row" },
                     btn('Kelola / ganti akun', 'manage'), btn('Deposit / WD', 'capital'), btn('Tambah akun', 'new'), btn('Backup', 'backup'))),
-            React.createElement("p", { className: "sync-note" }, "Edge Journal v" + APP_VERSION)));
+            React.createElement(CloudSyncCard, null),
+        React.createElement("div", { className: "tool-card" },
+            React.createElement("div", { className: "tool-head" },
+                React.createElement("div", { className: "tool-icon purple" },
+                    React.createElement(FileJson, null)),
+                React.createElement("div", null,
+                    React.createElement("h2", null, "Cloud backup"),
+                    React.createElement("p", null, "Backup JSON tersimpan sebagai file yang bisa dipulihkan di perangkat lain."))),
+            React.createElement("div", { className: "button-row" },
+                React.createElement("button", { className: "secondary-btn", onClick: onBackup },
+                    React.createElement(Cloud, { size: 15 }),
+                    " Create backup"),
+                React.createElement("label", { className: "secondary-btn" },
+                    React.createElement(Upload, { size: 15 }),
+                    " Restore",
+                    React.createElement("input", { type: "file", accept: "application/json", hidden: true, onChange: e => { var _a; return onRestore((_a = e.target.files) === null || _a === void 0 ? void 0 : _a[0]); } })))),
+        React.createElement("div", { className: "tool-card" },
+            React.createElement("div", { className: "tool-head" },
+                React.createElement("div", { className: "tool-icon green" },
+                    React.createElement(Share2, null)),
+                React.createElement("div", null,
+                    React.createElement("h2", null, "Export & share"),
+                    React.createElement("p", null,
+                        "Bagikan jurnal ",
+                        account.name,
+                        " ke Excel atau spreadsheet."))),
+            React.createElement("button", { className: "secondary-btn", onClick: onExport },
+                React.createElement(Download, { size: 16 }),
+                " Share CSV")),
+            React.createElement("p", { className: "sync-note" }, "Edge Journal v" + APP_VERSION + " \u00B7 data tersimpan lokal di perangkat ini")));
 }
 function PageHeading({ eyebrow, title, description, action }) { return React.createElement("div", { className: "page-heading" },
     React.createElement("div", null,
@@ -2186,7 +2230,7 @@ function CloudSyncCard() {
             React.createElement("button", { className: "secondary-btn", disabled: busy, onClick: () => run(() => { markSignedOut(); return cs.signOut(); }) }, "Keluar")));
 }
 function Tools({ account, trades, onAdd, onExport, onBackup, onRestore, onNewAccount }) { const [calc, setCalc] = useState({ symbol: 'XAUUSD', entry: '', sl: '', tp: '', lots: '0.01' }); const riskDistance = Math.abs(Number(calc.entry || 0) - Number(calc.sl || 0)); const riskUsd = riskFor(calc.entry, calc.sl, calc.lots, calc.symbol); const rewardUsd = rewardFor(calc.entry, calc.tp, calc.lots, calc.symbol); return React.createElement("section", null,
-    React.createElement(PageHeading, { eyebrow: "TOOLS / UTILITIES", title: "Trading Tools", description: "Kalkulator, backup, dan export.", action: React.createElement("button", { className: "icon-btn" },
+    React.createElement(PageHeading, { eyebrow: "TOOLS / UTILITIES", title: "Trading Tools", description: "Kalkulator risk dan reward.", action: React.createElement("button", { className: "icon-btn" },
             React.createElement(Settings2, { size: 18 })) }),
     React.createElement("div", { className: "tool-card featured" },
         React.createElement("div", { className: "tool-head" },
@@ -2226,41 +2270,8 @@ function Tools({ account, trades, onAdd, onExport, onBackup, onRestore, onNewAcc
                 React.createElement("span", null, "Risk % formula"),
                 React.createElement("strong", null, calc.entry && calc.sl ? `${(riskDistance / Number(calc.entry) * 100).toFixed(2)}%` : '—'),
                 React.createElement("small", null, "distance / entry")))),
-    React.createElement("div", { className: "tool-grid" },
-        React.createElement("div", { className: "tool-card" },
-            React.createElement("div", { className: "tool-head" },
-                React.createElement("div", { className: "tool-icon purple" },
-                    React.createElement(FileJson, null)),
-                React.createElement("div", null,
-                    React.createElement("h2", null, "Cloud backup"),
-                    React.createElement("p", null, "Backup JSON tersimpan sebagai file yang bisa dipulihkan di perangkat lain."))),
-            React.createElement("div", { className: "button-row" },
-                React.createElement("button", { className: "secondary-btn", onClick: onBackup },
-                    React.createElement(Cloud, { size: 15 }),
-                    " Create backup"),
-                React.createElement("label", { className: "secondary-btn" },
-                    React.createElement(Upload, { size: 15 }),
-                    " Restore",
-                    React.createElement("input", { type: "file", accept: "application/json", hidden: true, onChange: e => { var _a; return onRestore((_a = e.target.files) === null || _a === void 0 ? void 0 : _a[0]); } })))),
-        React.createElement("div", { className: "tool-card" },
-            React.createElement("div", { className: "tool-head" },
-                React.createElement("div", { className: "tool-icon green" },
-                    React.createElement(Share2, null)),
-                React.createElement("div", null,
-                    React.createElement("h2", null, "Export & share"),
-                    React.createElement("p", null,
-                        "Bagikan jurnal ",
-                        account.name,
-                        " ke Excel atau spreadsheet."))),
-            React.createElement("button", { className: "secondary-btn", onClick: onExport },
-                React.createElement(Download, { size: 16 }),
-                " Share CSV")),
-),
-    React.createElement("p", { className: "helper-note", style: { marginTop: 16, textAlign: 'center' } },
-        "Edge Journal v",
-        APP_VERSION,
-        " \u00B7 data tersimpan lokal di perangkat ini")); }
-function AddTradeModal({ account, onClose, onSave, initial }) {
+); }
+function AddTradeForm({ account, onClose, onSave, initial, page }) {
     var _a, _b, _c;
     const [form, setForm] = useState(initial ? { ...initial, entry: String((_a = initial.entry) !== null && _a !== void 0 ? _a : ''), exit: initial.exit == null ? '' : String(initial.exit), lots: String((_b = initial.lots) !== null && _b !== void 0 ? _b : ''), sl: initial.sl == null ? '' : String(initial.sl), tp: initial.tp == null ? '' : String(initial.tp), fees: String((_c = initial.fees) !== null && _c !== void 0 ? _c : 0), setup: initial.setup || '', screenshots: initial.screenshots || [] } : { symbol: 'XAUUSD', side: 'Long', date: isoNow(), entry: '', exit: '', lots: '0.01', sl: '', tp: '', fees: '0', setup: '', screenshots: [] });
     const [showAdjust, setShowAdjust] = useState(false);
@@ -2277,15 +2288,7 @@ function AddTradeModal({ account, onClose, onSave, initial }) {
     } }
     async function handleFiles(e) { const urls = await Promise.all([...(e.target.files || [])].slice(0, 3).map(fileToDataUrl)); set('screenshots', urls.filter(Boolean)); }
     function submit(e) { e.preventDefault(); onSave({ ...form, pnl: form.exit ? pnlFor(form, form.exit) : 0 }); }
-    return React.createElement("div", { className: "modal-backdrop" },
-        React.createElement("div", { className: "modal wide-modal", onPaste: handlePaste },
-            React.createElement("div", { className: "modal-head" },
-                React.createElement("div", null,
-                    React.createElement("p", { className: "eyebrow" }, initial ? 'EDIT TRADE / UPDATE' : 'NEW TRADE / MANUAL ENTRY'),
-                    React.createElement("h2", null, initial ? 'Edit trade' : 'Tambah trade')),
-                React.createElement("button", { className: "icon-btn", onClick: onClose },
-                    React.createElement(X, { size: 19 }))),
-            React.createElement("form", { onSubmit: submit },
+    const formEl = React.createElement("form", { onSubmit: submit },
                 React.createElement("div", { className: "form-grid" },
                     React.createElement("label", null,
                         "Symbol",
@@ -2312,7 +2315,7 @@ function AddTradeModal({ account, onClose, onSave, initial }) {
                     React.createElement("label", null,
                         "Take profit",
                         React.createElement("input", { inputMode: "decimal", value: form.tp, onChange: e => set('tp', e.target.value), placeholder: "2745.00" }))),
-                React.createElement("div", { className: "screenshot-upload" },
+                !page && React.createElement("div", { className: "screenshot-upload" },
                     React.createElement("div", null,
                         React.createElement("span", { className: "upload-title" },
                             React.createElement(Camera, { size: 15 }),
@@ -2325,7 +2328,7 @@ function AddTradeModal({ account, onClose, onSave, initial }) {
                         React.createElement(Upload, { size: 15 }),
                         " Upload",
                         React.createElement("input", { type: "file", accept: "image/*", multiple: true, hidden: true, onChange: handleFiles }))),
-                form.screenshots.length > 0 && React.createElement("div", { className: "preview-strip" }, form.screenshots.map((src, i) => React.createElement("div", { key: i },
+                !page && form.screenshots.length > 0 && React.createElement("div", { className: "preview-strip" }, form.screenshots.map((src, i) => React.createElement("div", { key: i },
                     React.createElement("img", { src: src, alt: `Preview ${i + 1}` }),
                     React.createElement("button", { type: "button", onClick: () => askConfirm('Apakah Anda yakin ingin menghapus screenshot ini dari trade?').then(ok => { if (ok)
                             set('screenshots', form.screenshots.filter((_, idx) => idx !== i)); }) },
@@ -2355,8 +2358,24 @@ function AddTradeModal({ account, onClose, onSave, initial }) {
                 calculated && React.createElement("p", { className: "helper-note" },
                     React.createElement(ClipboardPaste, { size: 13 }),
                     " Kalkulasi tersimpan sebelum submit. ",
-                    suggestedLots ? `Ukuran lot 1% risiko: ${suggestedLots.toFixed(2)}` : ''))));
+                    suggestedLots ? `Ukuran lot 1% risiko: ${suggestedLots.toFixed(2)}` : ''));
+    if (page)
+        return React.createElement("section", null,
+            React.createElement(PageHeading, { eyebrow: "NEW TRADE / MANUAL ENTRY", title: "Tambah trade", description: `Catat posisi baru untuk akun ${account.name}.`, action: React.createElement("button", { type: "button", className: "icon-btn", "aria-label": "Tutup", onClick: onClose },
+                    React.createElement(X, { size: 19 })) }),
+            React.createElement("div", { className: "tool-card featured add-page" }, formEl));
+    return React.createElement("div", { className: "modal-backdrop" },
+        React.createElement("div", { className: "modal wide-modal", onPaste: handlePaste },
+            React.createElement("div", { className: "modal-head" },
+                React.createElement("div", null,
+                    React.createElement("p", { className: "eyebrow" }, initial ? 'EDIT TRADE / UPDATE' : 'NEW TRADE / MANUAL ENTRY'),
+                    React.createElement("h2", null, initial ? 'Edit trade' : 'Tambah trade')),
+                React.createElement("button", { className: "icon-btn", onClick: onClose },
+                    React.createElement(X, { size: 19 }))),
+            formEl));
 }
+function AddTradeModal(props) { return React.createElement(AddTradeForm, props); }
+function AddTradePage(props) { return React.createElement(AddTradeForm, { ...props, page: true }); }
 function CloseTradeModal({ trade, onClose, onSave }) { var _a; const [form, setForm] = useState({ tradeId: trade.id, exit: (trade.tp !== null && trade.tp !== undefined && trade.tp !== '') ? trade.tp : ((_a = trade.exit) !== null && _a !== void 0 ? _a : trade.entry), closeDate: isoNow(), exitMethod: (trade.tp !== null && trade.tp !== undefined && trade.tp !== '') ? 'TP' : 'Manual', fees: '0', review: '' }); const set = (k, v) => setForm({ ...form, [k]: v }); function method(m) { const exit = m === 'TP' ? trade.tp : m === 'SL' ? trade.sl : m === 'BE' ? trade.entry : form.exit; setForm({ ...form, exit: exit !== null && exit !== void 0 ? exit : '', exitMethod: m }); } return React.createElement("div", { className: "modal-backdrop" },
     React.createElement("div", { className: "modal compact-modal" },
         React.createElement("div", { className: "modal-head" },

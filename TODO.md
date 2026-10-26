@@ -230,3 +230,22 @@
   - Win/Loss: Win / Loss, Win Rate, Avg. Win / Loss, Perolehan Pips (donut tetap ada di mode normal).
 - Persen (%) dihitung dari modal awal (sama seperti Gain / Monthly gain).
 - File berubah: index.html, sw.js (cache edge-journal-v12), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.2 — Menu bawah & halaman Tambah trade
+- Tombol Tambah posisi di menu bawah: hanya ikon, tanpa warna latar/bayangan (ikut gaya tab lain; saat aktif ikon jadi putih).
+- Tambah trade bukan pop up lagi, tapi halaman biasa seperti Trading Tools (tombol X di kanan atas untuk kembali ke halaman sebelumnya). Edit trade tetap berupa pop up.
+- Trading Tools sekarang hanya berisi Risk calculator.
+- Halaman Akun, urutan: Akun trading, Sinkron online, Cloud backup, Export & share.
+- File berubah: index.html, sw.js (cache edge-journal-v13), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.3 — Penyempurnaan tombol Tambah posisi
+- Ikon Tambah posisi di menu bawah diperbesar (31px) dan berada tepat di tengah bar (vertikal & horizontal).
+- Saat diklik/aktif, ada animasi yang sama dengan 4 ikon lain (pil biru melebar + ikon membal).
+- Halaman Tambah trade: fitur Screenshots / chart dihilangkan. Pop up Edit trade tetap menampilkan screenshot lama bila ada.
+- File berubah: index.html, sw.js (cache edge-journal-v14), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.4 — Menu bawah: kotak sudut tumpul
+- Kelima menu (Performance, My Journal, Tambah posisi, Tools, Akun) sekarang sama besar (70×54 px di layar 390).
+- Penanda aktif berupa kotak sudut tumpul biru seperti tab Growth/Balance/Profit; hanya kotaknya yang beranimasi (naik saat hover, mengecil saat ditekan). Ikon dan tulisan tidak lagi membal/bergerak.
+- Ikon Tambah posisi sama ukurannya dengan ikon lain (24px) dan berada di tengah kotak.
+- File berubah: index.html, sw.js (cache edge-journal-v15), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
