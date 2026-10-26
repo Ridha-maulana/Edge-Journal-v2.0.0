@@ -1,0 +1,1 @@
+# Edge-Journal-v2.0.0
