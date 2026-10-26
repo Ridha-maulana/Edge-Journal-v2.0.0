@@ -264,3 +264,20 @@
 - Kartu tidak lagi hilang: bila tidak ada data pada periode terpilih, kartu tetap tampil dengan pesan kosong. Klik "Semua waktu" untuk kembali normal (semua bulan).
 - Tombol tahun di dalam kartu (v2.8.5) dihapus karena tahun diatur dari Monthly gain.
 - File berubah: index.html, sw.js (cache edge-journal-v17), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.7 — Menu bawah simpel, pop up layar penuh, format jam
+- Menu bawah mengikuti contoh video: ikon + tulisan, tanpa kotak/pil, kelima menu sama ukuran (76×74 di layar 390). Menu aktif berwarna putih. Tombol tengah sekarang punya tulisan "Add trade".
+- Tambah trade kembali berupa pop up, tetapi layar penuh tanpa jarak di atas. Berlaku juga untuk Edit trade, Close trade, dan konfirmasi hapus.
+- Bagian "Screenshots / chart" dihapus dari form tambah/edit (paste gambar juga dinonaktifkan).
+- Dua tombol di bawah (Calculate / Adjust risk & Save open trade; Batal & Save close; Batal & Ya hapus) sama besar dan simetris.
+- Jam memakai titik dua (21:15, bukan 21.15) di form, jurnal, "Closed at", info sinkron, dan jam sesi (06:00–12:00).
+- File berubah: index.html, sw.js (cache edge-journal-v18), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.8 — Ikon di Advanced Statistics, menu bawah saat ditekan, Akun → Profil
+- Advanced Statistics: tulisan di tombol diganti ikon dan disusun satu baris seperti menu bawah.
+  - Performa: Bulan (kalender), Minggu (kalender rentang), Hari (kalender harian), Sesi (jam), Win/Loss (piala), Kunci (gembok terbuka/tertutup).
+  - Grafik: Growth (grafik naik), Balance (timbangan), Profit (koin), Daily P&L (grafik pie), Drawdown (grafik turun).
+  - Tombol tetap punya aria-label/title untuk aksesibilitas.
+- Menu bawah: kotak biru bersudut tumpul hanya muncul selama ditekan dan langsung hilang saat jari dilepas (tanpa animasi lanjutan). Menu halaman aktif tetap ditandai warna putih.
+- Menu dan halaman "Akun" diganti menjadi "Profil" (isi halaman tetap sama).
+- File berubah: index.html, sw.js (cache edge-journal-v19), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
