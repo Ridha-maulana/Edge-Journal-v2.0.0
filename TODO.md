@@ -249,3 +249,18 @@
 - Penanda aktif berupa kotak sudut tumpul biru seperti tab Growth/Balance/Profit; hanya kotaknya yang beranimasi (naik saat hover, mengecil saat ditekan). Ikon dan tulisan tidak lagi membal/bergerak.
 - Ikon Tambah posisi sama ukurannya dengan ikon lain (24px) dan berada di tengah kotak.
 - File berubah: index.html, sw.js (cache edge-journal-v15), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.5 — Performa per bulan satu data dengan Monthly gain
+- Kartu Performa per bulan/minggu/hari/sesi sekarang memakai tahun dan bulan yang sama dengan Monthly gain dan Kalender (satu sumber: trade closed). Ganti tahun di Monthly gain → kartu ikut; pilih bulan di salah satunya → yang lain ikut.
+- Hanya bulan yang ada datanya yang ditampilkan (dinamis). Jika tahun terpilih tidak punya data (mis. 2028) kartu disembunyikan, muncul lagi otomatis saat ada data.
+- Tombol tahun ‹ 2026 › di kartu ini melompat ke tahun berikutnya/sebelumnya yang ada datanya.
+- Mode Kunci menggabungkan data hanya pada tahun terpilih.
+- Bulan, hari, dan sesi dihitung dengan zona waktu WIB yang sama seperti Monthly gain.
+- File berubah: index.html, sw.js (cache edge-journal-v16), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.6 — Hierarki penyaringan: Periode → Monthly gain → kartu Performa per bulan
+- Kartu Performa per bulan/minggu/hari/sesi memakai data yang sudah lolos Periode, termasuk bulan/tahun yang dipilih di Monthly gain (satu data dengan kartu lain).
+- Klik grafik bulan di Monthly gain (tahun berapa pun) → kartu hanya menampilkan bulan itu. Pindah tahun di Monthly gain → kartu ikut pindah.
+- Kartu tidak lagi hilang: bila tidak ada data pada periode terpilih, kartu tetap tampil dengan pesan kosong. Klik "Semua waktu" untuk kembali normal (semua bulan).
+- Tombol tahun di dalam kartu (v2.8.5) dihapus karena tahun diatur dari Monthly gain.
+- File berubah: index.html, sw.js (cache edge-journal-v17), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt

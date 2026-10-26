@@ -320,7 +320,11 @@ html,body{background:#090d18}
 .dd-crumb:disabled{cursor:default;opacity:.85}
 .dd-crumb.seen{color:#cfd8f3;border-color:#2c3c66}
 .dd-crumb.on{background:#1d2c57;color:#fff;border-color:#4a68c8;box-shadow:0 0 0 1px #4a68c8,0 6px 18px #1d2c5766}
-.dd-lockrow{display:flex;justify-content:flex-end;margin:10px 0 2px}
+.dd-lockrow{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin:10px 0 2px}
+.dd-year{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#e8edff}
+.dd-year .dd-lock{padding:6px 12px;font-size:15px;line-height:1}
+.dd-lock:disabled{opacity:.35;cursor:default}
+.dd-item.sel{border-color:#4a68c8;box-shadow:0 0 0 1px #4a68c855}
 .dd-lock.on{background:#3a2f12;border-color:#f5b84b99;color:#f5b84b;box-shadow:0 0 0 1px #f5b84b66}
 .dd-title{margin:12px 0 12px!important;font-size:15px!important}
 .dd-best{background:#10342b;border:1px solid #2f8f6f;border-radius:12px;padding:11px 12px;font-size:13px;margin-bottom:12px;line-height:1.5}
@@ -362,9 +366,9 @@ html,body{background:#090d18}
 .dd-btn:disabled{opacity:.4;cursor:default}
 /* efek hover & tekan sama seperti tab Growth / Balance / Profit dan tombol Performance */
 .dd-crumb,.dd-lock,.dd-btn,.dd-item{transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s ease,border-color .25s ease,box-shadow .25s ease}
-.dd-crumb:not(:disabled):hover,.dd-lock:hover,.dd-btn:not(:disabled):hover,.dd-item.click:hover,.dd-item.click:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px #5b7fff2b;border-color:#5c7fe0}
+.dd-crumb:not(:disabled):hover,.dd-lock:not(:disabled):hover,.dd-btn:not(:disabled):hover,.dd-item.click:hover,.dd-item.click:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px #5b7fff2b;border-color:#5c7fe0}
 .dd-crumb.on:hover{box-shadow:0 0 0 1px #4a68c8,0 8px 20px #5b7fff2b}
-.dd-crumb:not(:disabled):active,.dd-lock:active,.dd-btn:not(:disabled):active{transform:scale(.95)}
+.dd-crumb:not(:disabled):active,.dd-lock:not(:disabled):active,.dd-btn:not(:disabled):active{transform:scale(.95)}
 .dd-item.click:active{transform:scale(.985)}
 @media(max-width:600px){.dd-crumb{padding:7px 7px;font-size:11.5px;gap:3px}.dd-crumbs{gap:4px;flex-wrap:nowrap}.dd-crumb i{font-size:11px}}
 @media(max-width:380px){.dd-crumb{padding:7px 5px;font-size:11px}.dd-crumbs{gap:3px}.dd-ihead strong{font-size:14.5px}}
@@ -434,7 +438,7 @@ window.__hideSplash=function(){
 window.addEventListener("error",function(e){var b=document.getElementById("boot");if(b&&!window.__appMounted)b.textContent="Error: "+e.message;});
 "use strict";
 const { useEffect, useMemo, useRef, useState } = React;
-const APP_VERSION = '2.8.4';
+const APP_VERSION = '2.8.6';
 const ICONS = { "CandlePlus": [["path", { "d": "M5 3v3" }], ["rect", { "x": 3, "y": 6, "width": 4, "height": 11, "rx": 1 }], ["path", { "d": "M5 17v3" }], ["path", { "d": "M12 8v2" }], ["rect", { "x": 10, "y": 10, "width": 4, "height": 7, "rx": 1 }], ["path", { "d": "M12 17v2" }], ["path", { "d": "M19 3v6" }], ["path", { "d": "M16 6h6" }]], "Activity": [["polyline", { "points": "22 12 18 12 15 21 9 3 6 12 2 12" }]], "ArrowDownRight": [["path", { "d": "M7 7l10 10" }], ["path", { "d": "M17 7v10H7" }]], "ArrowUpRight": [["path", { "d": "M7 17L17 7" }], ["path", { "d": "M7 7h10v10" }]], "BarChart3": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M18 17V9" }], ["path", { "d": "M13 17V5" }], ["path", { "d": "M8 17v-3" }]], "BookOpen": [["path", { "d": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" }], ["path", { "d": "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" }]], "CalendarDays": [["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M16 2v4" }], ["path", { "d": "M8 2v4" }], ["path", { "d": "M3 10h18" }], ["path", { "d": "M8 14h.01" }], ["path", { "d": "M12 14h.01" }], ["path", { "d": "M16 14h.01" }], ["path", { "d": "M8 18h.01" }], ["path", { "d": "M12 18h.01" }], ["path", { "d": "M16 18h.01" }]], "Camera": [["path", { "d": "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z" }], ["circle", { "cx": 12, "cy": 13, "r": 3 }]], "ChevronDown": [["path", { "d": "M6 9l6 6 6-6" }]], "ChevronLeft": [["path", { "d": "M15 18l-6-6 6-6" }]], "ChevronRight": [["path", { "d": "M9 18l6-6-6-6" }]], "CircleHelp": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["path", { "d": "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }], ["path", { "d": "M12 17h.01" }]], "ClipboardPaste": [["path", { "d": "M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1z" }], ["path", { "d": "M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" }]], "Cloud": [["path", { "d": "M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z" }]], "Download": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M7 10l5 5 5-5" }], ["path", { "d": "M12 15V3" }]], "FileJson": [["path", { "d": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" }], ["path", { "d": "M14 2v6h6" }], ["path", { "d": "M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1" }], ["path", { "d": "M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1" }]], "Filter": [["path", { "d": "M22 3H2l8 9.46V19l4 2v-8.54z" }]], "LineChart": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M19 9l-5 5-4-4-3 3" }]], "Plus": [["path", { "d": "M5 12h14" }], ["path", { "d": "M12 5v14" }]], "Search": [["circle", { "cx": 11, "cy": 11, "r": 8 }], ["path", { "d": "M21 21l-4.3-4.3" }]], "Settings2": [["path", { "d": "M20 7h-9" }], ["path", { "d": "M14 17H5" }], ["circle", { "cx": 17, "cy": 17, "r": 3 }], ["circle", { "cx": 7, "cy": 7, "r": 3 }]], "Share2": [["circle", { "cx": 18, "cy": 5, "r": 3 }], ["circle", { "cx": 6, "cy": 12, "r": 3 }], ["circle", { "cx": 18, "cy": 19, "r": 3 }], ["path", { "d": "M8.59 13.51l6.83 3.98" }], ["path", { "d": "M15.41 6.51l-6.82 3.98" }]], "SlidersHorizontal": [["path", { "d": "M21 4h-7" }], ["path", { "d": "M10 4H3" }], ["path", { "d": "M21 12h-9" }], ["path", { "d": "M8 12H3" }], ["path", { "d": "M21 20h-5" }], ["path", { "d": "M12 20H3" }], ["path", { "d": "M14 2v4" }], ["path", { "d": "M8 10v4" }], ["path", { "d": "M16 18v4" }]], "Target": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["circle", { "cx": 12, "cy": 12, "r": 6 }], ["circle", { "cx": 12, "cy": 12, "r": 2 }]], "Trash2": [["path", { "d": "M3 6h18" }], ["path", { "d": "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" }], ["path", { "d": "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" }], ["path", { "d": "M10 11v6" }], ["path", { "d": "M14 11v6" }]], "TrendingDown": [["path", { "d": "M22 17l-8.5-8.5-5 5L2 7" }], ["path", { "d": "M16 17h6v-6" }]], "TrendingUp": [["path", { "d": "M22 7l-8.5 8.5-5-5L2 17" }], ["path", { "d": "M16 7h6v6" }]], "Upload": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M17 8l-5-5-5 5" }], ["path", { "d": "M12 3v12" }]], "UserRound": [["circle", { "cx": 12, "cy": 8, "r": 5 }], ["path", { "d": "M20 21a8 8 0 0 0-16 0" }]], "Wallet": [["path", { "d": "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" }], ["path", { "d": "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" }]], "X": [["path", { "d": "M18 6L6 18" }], ["path", { "d": "M6 6l12 12" }]], "Zap": [["path", { "d": "M13 2L3 14h9l-1 8 10-12h-9l1-8z" }]] };
 function Icon({ name, size = 24, strokeWidth = 2, className, style }) {
     const node = ICONS[name] || [];
@@ -1264,19 +1268,20 @@ const DD_WKND = 'Akhir pekan (Sab–Min)';
 const DD_SCOL = { 'Asia': '#34d399', 'London': '#6b8dff', 'New York': '#f5b84b', 'Overlap': '#9b82ff' };
 const DD_LCOL = ['#6b8dff', '#9b82ff', '#f5b84b'];   // dot level: bulan (biru), minggu (ungu), hari (kuning) = warna kotak info
 const DD_LV = ['Bulan', 'Minggu', 'Hari', 'Sesi', 'Win/Loss'];
-const DD_LOCK_MSG = ['Menampilkan semua bulan', 'Data per nomor minggu dari semua bulan', 'Data per hari dari semua minggu', '4 sesi dengan data agregat dari semua hari', 'Distribusi win/loss agregat dari semua hari'];
+const DD_LOCK_MSG = ['Menampilkan semua bulan pada periode terpilih', 'Data per nomor minggu dari semua bulan', 'Data per hari dari semua minggu', '4 sesi dengan data agregat dari semua hari', 'Distribusi win/loss agregat dari semua hari'];
 const DD_BEST = ['Bulan terbaik', 'Minggu terbaik', 'Hari terbaik', 'Sesi terbaik'];
 const dd2 = n => String(n).padStart(2, '0');
 function ddBuild(trades) {
     const out = [];
     trades.forEach(t => {
         try {
-            const iso = dateOnly(t.date);
-            const y = Number(iso.slice(0, 4)), m = Number(iso.slice(5, 7)) - 1, d = Number(iso.slice(8, 10));
+            const w = wib(t.date);                       // zona WIB, sama dengan Monthly gain
+            const iso = w.day;
+            const y = Number(w.year), m = Number(w.mi), d = Number(iso.slice(8, 10));
             if (!y || m < 0 || m > 11 || !d) return;
             const off = (new Date(y, m, 1).getDay() + 6) % 7;
             const di = (new Date(y, m, d, 12).getDay() + 6) % 7;
-            const ses = SESSIONS.find(s => s.test(wib(t.date).hour));
+            const ses = SESSIONS.find(s => s.test(w.hour));
             if (!ses) return;
             out.push({ mk: `${y}-${dd2(m + 1)}`, iso, wk: Math.floor((d - 1 + off) / 7) + 1, di: Math.min(di, 5), day: di < 5 ? DD_DAYS[di] : DD_WKND, ses: ses.name, pnl: Number(t.pnl) || 0, pips: pipsOf(t) || 0 });
         } catch (e) { /* tanggal rusak: lewati */ }
@@ -1314,7 +1319,7 @@ function DdDonut({ st }) {
         wA > 0 && h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#34d399', strokeWidth: 24, strokeDasharray: `${wA} ${c}`, transform: 'rotate(-90 90 90)' }),
         h('text', { x: 90, y: 100, textAnchor: 'middle', fontSize: 28, fontWeight: 800, fill: col }, `${st.wr.toFixed(1)}%`));
 }
-function DrillDown({ account, trades }) {
+function DrillDown({ account, trades, rangeText }) {
     const h = React.createElement;
     const fm = n => money(n, account.currency);
     const sg = n => n > 0 ? `+${fm(n)}` : n < 0 ? `-${fm(Math.abs(n))}` : fm(0);
@@ -1324,6 +1329,8 @@ function DrillDown({ account, trades }) {
     const startBal = Math.max((account.balance || 0) - sumOf(hist.filter(x => x.type !== 'withdraw'), x => x.amount) + sumOf(hist.filter(x => x.type === 'withdraw'), x => x.amount), 1);
     const pct = v => `${v > 0 ? '+' : ''}${(v / startBal * 100).toFixed(2)}%`;
     const pipTxt = v => `${v > 0 ? '+' : ''}${v.toFixed(1)} pips`;
+    // Hierarki penyaringan: Periode -> pilihan Monthly gain -> kartu ini. `trades` sudah berupa trade closed
+    // yang lolos Periode (termasuk rentang bulan yang dipilih di Monthly gain), jadi kartu selalu satu data dengan Monthly gain.
     const recs = useMemo(() => ddBuild((trades || []).filter(t => t.status === 'closed')), [trades]);
     const [level, setLevel] = useState(0);
     const [locked, setLocked] = useState(false);
@@ -1355,7 +1362,7 @@ function DrillDown({ account, trades }) {
 
     if (!recs.length) return h('div', { className: 'pe-card dd', ref: cardRef },
         h('h3', null, 'Performa per bulan / minggu / hari / sesi'),
-        h('p', { className: 'pe-empty' }, 'Belum ada trade closed. Tutup posisi pertama Anda untuk melihat performa per bulan, minggu, hari, dan sesi.'));
+        h('p', { className: 'pe-empty' }, rangeText && rangeText !== 'All time' ? `Belum ada trade closed pada periode ${rangeText}. Pilih bulan atau periode lain.` : 'Belum ada trade closed. Tutup posisi pertama Anda untuk melihat performa per bulan, minggu, hari, dan sesi.'));
 
     // ----- susun daftar kartu untuk level aktif -----
     const mkItem = (key, o, rs) => ({ key, st: ddStat(rs), tags: [], ...o });
@@ -1460,7 +1467,7 @@ function DrillDown({ account, trades }) {
     if (lv < 4) {
         body = items.map(i => {
             const ok = locked || i.st.n > 0;
-            return h('div', { key: i.key, className: 'dd-item' + (ok ? ' click' : ' dim'), role: ok ? 'button' : undefined, tabIndex: ok ? 0 : undefined, onClick: ok ? () => pick(i) : undefined, onKeyDown: ok ? (e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } }) : undefined },
+            return h('div', { key: i.key, className: 'dd-item' + (ok ? ' click' : ' dim') + '', role: ok ? 'button' : undefined, tabIndex: ok ? 0 : undefined, onClick: ok ? () => pick(i) : undefined, onKeyDown: ok ? (e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(i); } }) : undefined },
                 h('div', { className: 'dd-ihead' }, h('i', { className: 'dd-dot', style: { background: i.dot } }), h('strong', null, i.title), i.note ? h('span', { className: 'dd-small' }, `(${i.note})`) : null),
                 i.sub ? h('div', { className: 'dd-sub' }, i.sub) : null,
                 tagEls(i.tags),
@@ -1485,13 +1492,14 @@ function DrillDown({ account, trades }) {
 
     return h('div', { className: 'pe-card dd', ref: cardRef },
         h('div', { className: 'dd-crumbs' }, crumbs),
-        h('div', { className: 'dd-lockrow' }, h('button', { type: 'button', className: 'dd-lock' + (locked ? ' on' : ''), onClick: () => setLocked(v => !v), 'aria-pressed': locked }, locked ? '🔒 Terkunci' : '🔓 Kunci')),
+        h('div', { className: 'dd-lockrow' },
+            h('button', { type: 'button', className: 'dd-lock' + (locked ? ' on' : ''), onClick: () => setLocked(v => !v), 'aria-pressed': locked }, locked ? '🔒 Terkunci' : '🔓 Kunci')),
         h('h3', { className: 'dd-title' }, title, ' ', h('small', null, `(${small})`)),
         hl, body,
         h('div', { className: 'dd-nav' },
             h('button', { type: 'button', className: 'dd-btn back', disabled: lv === 0, onClick: goBack }, lv === 0 ? '← Kembali' : `← Kembali ke ${DD_LV[lv - 1]}`),
             h('button', { type: 'button', className: 'dd-btn next', disabled: lv >= 4, onClick: goNext }, lv >= 4 ? 'Selesai ✓' : 'Selanjutnya →')),
-        h('p', { className: 'pe-note' }, 'Minggu mengikuti baris pada Kalender (Senin–Minggu); hari dihitung dari tanggal entry; sesi dari jam entry (WIB): Asia 06–12, London 12–20, New York 20–04, Overlap 04–06. Persen (%) dihitung dari modal awal, sama seperti Gain dan Monthly gain. Tombol Kunci menampilkan data gabungan dari semua bulan/minggu/hari.'));
+        h('p', { className: 'pe-note' }, 'Minggu mengikuti baris pada Kalender (Senin–Minggu); hari dihitung dari tanggal entry; sesi dari jam entry (WIB): Asia 06–12, London 12–20, New York 20–04, Overlap 04–06. Persen (%) dihitung dari modal awal, sama seperti Gain dan Monthly gain. Data kartu ini mengikuti Periode di atas dan bulan/tahun yang dipilih di Monthly gain (satu data, bulan tanpa trade tidak ditampilkan). Tombol Kunci menampilkan data gabungan dari semua bulan/minggu/hari pada periode itu.'));
 }
 function PerfExtra({ account, trades, filtered, total, maxDd, onSelectDate, view, onPickMonth, onResetAll, rangeText, mode = 'all', advancedStats }) {
     const cur = account.currency;
@@ -1657,7 +1665,7 @@ function PerfExtra({ account, trades, filtered, total, maxDd, onSelectDate, view
                 React.createElement("b", null,
                     w ? '-' : '+',
                     fm(h.amount))); }))),
-        React.createElement(DrillDown, { key: account.id, account: account, trades: trades }),
+        React.createElement(DrillDown, { key: account.id, account: account, trades: filtered, rangeText: rangeText }),
         advancedStats,
         React.createElement("div", { className: "pe-card" },
             React.createElement("h3", null, "P&L per pair"),
