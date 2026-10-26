@@ -1,0 +1,9 @@
+{
+  "name": "jurnale",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PWA jurnal trading dengan penyimpanan lokal di browser",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
