@@ -1,16 +1,6 @@
-Edge Journal v2.8.0 — Drill-down performa (Bulan > Minggu > Hari > Sesi > Win/Loss) di Advanced Statistics
-
-File yang perlu di-commit (4 file):
-  index.html
-  sw.js
-  TODO.md
-  UPLOAD_ONLY_CHANGED_FILES.txt
-
-(login-art.webp, firebase-config.js, cloud-sync.js, manifest dan ikon TIDAK berubah.)
-
-Perintah:
-  git add index.html sw.js TODO.md UPLOAD_ONLY_CHANGED_FILES.txt
-  git commit -m "v2.8.0: drill-down performa bulan/minggu/hari/sesi/win-loss + mode kunci"
-  git push
-
-Setelah upload: buka aplikasi 2 kali (kali pertama mengunduh versi baru di belakang layar).
+Edge Journal v2.8.1 — file yang berubah (upload ke GitHub, timpa yang lama):
+1. index.html
+2. sw.js
+3. TODO.md
+4. UPLOAD_ONLY_CHANGED_FILES.txt
+File lain tidak berubah.

@@ -219,3 +219,14 @@
 - [x] Kode perhitungan lama untuk 4 kartu dihapus dari PerfExtra. Kartu Kalender, Monthly gain, Growth, tabel Advanced Statistics, P&L per pair, dan Trader DNA tidak berubah.
 - [x] Cache service worker dinaikkan ke `edge-journal-v11`; versi aplikasi 2.8.0.
 
+
+## v2.8.1 — Penyempurnaan kartu Performa (drill-down)
+- Warna & efek kartu Performa disamakan dengan tab Growth/Balance/Profit/Daily P&L/Drawdown: tombol aktif biru, efek hover naik + tekan mengecil, palet app (#34d399 / #ff6b81).
+- Kotak info kecil di semua level: hari (abu), minggu (ungu), bulan (biru), sesi (titik warna).
+  - Bulan: N minggu, N hari, N sesi, lalu posisi, WR, %, profit.
+  - Minggu: bulan, hari, sesi, lalu posisi, WR, %, profit.
+  - Hari: bulan, minggu, sesi, lalu posisi, WR, %, profit.
+  - Sesi: hari, minggu, bulan, lalu posisi, WR, %, profit.
+  - Win/Loss: Win / Loss, Win Rate, Avg. Win / Loss, Perolehan Pips (donut tetap ada di mode normal).
+- Persen (%) dihitung dari modal awal (sama seperti Gain / Monthly gain).
+- File berubah: index.html, sw.js (cache edge-journal-v12), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt

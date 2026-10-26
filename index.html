@@ -314,54 +314,64 @@ html,body{background:#090d18}
 @keyframes navIcoIn{0%{transform:translateY(3px) scale(.82)}60%{transform:translateY(-1px) scale(1.1)}100%{transform:none}}
 @media(prefers-reduced-motion:reduce){#splash,#splash *{animation:none!important;transition:none!important}#splash .sp-text strong,#splash .sp-text span{opacity:1!important}}
 
-/* ===== v2.8.0 — Drill-down performa (Bulan > Minggu > Hari > Sesi > Win/Loss) ===== */
+/* ===== v2.8.0/v2.8.1 — Drill-down performa (Bulan > Minggu > Hari > Sesi > Win/Loss) =====
+   Warna & efek tekan mengikuti kartu lain (tab Growth/Balance/Profit, .pe-best, .pe-banner, .pe-bar). */
 .dd{scroll-margin-top:78px}
-.dd .pos{color:#4ade80}.dd .neg{color:#f87171}.dd .zero{color:#889}
-.dd-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
-.dd-crumb{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);color:#667;border-radius:8px;padding:7px 8px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;line-height:1.2;white-space:nowrap;flex:0 1 auto}
-.dd-crumb i{font-style:normal;opacity:.5;font-size:11px}
-.dd-crumb:disabled{cursor:default}
-.dd-crumb.seen{background:rgba(74,222,128,.07);border-color:rgba(74,222,128,.3);color:#7fe0a3}
-.dd-crumb.on{background:rgba(74,222,128,.16);border-color:#4ade80;color:#4ade80}
-.dd-lockrow{display:flex;justify-content:flex-end;margin:8px 0 4px}
-.dd-lock{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:#aab0c8;border-radius:8px;padding:6px 11px;font-size:12px;font-weight:600}
-.dd-lock.on{background:rgba(251,191,36,.12);border-color:rgba(251,191,36,.5);color:#fbbf24}
-.dd-title{margin:10px 0 12px!important;font-size:16px!important}
-.dd-hl{background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:9px;padding:11px 13px;font-size:12px;line-height:1.5;margin-bottom:12px;color:#d6f5e0}
-.dd-hl b{color:#fff}
-.dd-item{display:block;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px 14px;margin-bottom:10px;outline:none}
+.dd .pos{color:#34d399}.dd .neg{color:#ff6b81}.dd .zero{color:#8a94ab}
+.dd-crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.dd-crumb,.dd-lock,.dd-btn{background:#0b1222;border:1px solid #202d47;color:#8a94ab;border-radius:10px;padding:7px 10px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:5px;line-height:1.2;white-space:nowrap}
+.dd-crumb i{font-style:normal;opacity:.55;font-size:12px}
+.dd-crumb:disabled{cursor:default;opacity:.85}
+.dd-crumb.seen{color:#cfd8f3;border-color:#2c3c66}
+.dd-crumb.on{background:#1d2c57;color:#fff;border-color:#4a68c8;box-shadow:0 0 0 1px #4a68c8,0 6px 18px #1d2c5766}
+.dd-lockrow{display:flex;justify-content:flex-end;margin:10px 0 2px}
+.dd-lock.on{background:#3a2f12;border-color:#f5b84b99;color:#f5b84b;box-shadow:0 0 0 1px #f5b84b66}
+.dd-title{margin:12px 0 12px!important;font-size:15px!important}
+.dd-best{background:#10342b;border:1px solid #2f8f6f;border-radius:12px;padding:11px 12px;font-size:13px;margin-bottom:12px;line-height:1.5}
+.dd-info{display:block;background:#162144;border:1px solid #405a9a;color:#cbd8ff;border-radius:12px;padding:10px 12px;font-size:12.5px;margin-bottom:12px;line-height:1.5}
+.dd-item{display:block;background:#0b1222;border:1px solid #202d47;border-radius:14px;padding:13px 14px;margin-bottom:10px;outline:none}
 .dd-item.click{cursor:pointer}
-.dd-item.click:hover,.dd-item.click:focus-visible{background:rgba(255,255,255,.045);border-color:rgba(74,222,128,.5)}
-.dd-item.dim{opacity:.7}
+.dd-item.dim{opacity:.6}
 .dd-ihead{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px}
-.dd-ihead strong{font-size:16px;font-weight:700;color:#fff}
+.dd-ihead strong{font-size:15px;font-weight:700;color:#eef2ff}
 .dd-dot{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
-.dd-small{font-size:11px;color:#889;font-weight:400}
-.dd-sub{font-size:12px;color:#889;margin-top:5px;line-height:1.4}
-.dd-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
-.dd-tag{font-size:11px;line-height:1;padding:5px 8px;border-radius:6px;border:1px solid transparent}
-.dd-tag.day{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:#99a}
-.dd-tag.week{background:rgba(167,139,250,.14);border-color:rgba(167,139,250,.4);color:#c4b5fd}
-.dd-tag.month{background:rgba(96,165,250,.14);border-color:rgba(96,165,250,.4);color:#93c5fd}
-.dd-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:10px;font-size:13px;color:#99a}
-.dd-meta{display:flex;gap:12px;flex-wrap:wrap}
-.dd-pr{font-size:17px;font-weight:800;white-space:nowrap}
-.dd-bar{height:5px;border-radius:4px;background:rgba(255,255,255,.05);margin-top:9px;overflow:hidden}
-.dd-bar i{display:block;height:100%;border-radius:4px}
-.dd-tbl{margin-top:10px}
-.dd-tbl>div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:13px}
+.dd-small{font-size:11px;color:#7d8bab;font-weight:400}
+.dd-sub{font-size:11.5px;color:#7d8bab;margin-top:5px;line-height:1.4}
+.dd-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.dd-tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;line-height:1;padding:6px 9px;border-radius:7px;border:1px solid transparent}
+.dd-tag i{width:7px;height:7px;border-radius:50%;display:inline-block;flex:none}
+.dd-tag.day{background:#161f36;border-color:#26324f;color:#9aa6c4}
+.dd-tag.week{background:#241f45;border-color:#4b3f8f;color:#c4b5ff}
+.dd-tag.month{background:#14224a;border-color:#34509a;color:#9db6ff}
+.dd-tag.ses{background:#10192f;border-color:#26324f;color:#cfd8f3}
+.dd-tag.cnt{background:#121b33;border-color:#26345a;color:#aab6cf}
+.dd-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:11px;font-size:12.5px;color:#8a94ab}
+.dd-meta{display:flex;gap:6px 12px;flex-wrap:wrap}
+.dd-meta span.pos,.dd-meta span.neg{font-weight:700}
+.dd-pr{font-size:16px;font-weight:800;white-space:nowrap}
+.dd-bar{height:8px;border-radius:6px;background:#151f3b;margin-top:10px;overflow:hidden}
+.dd-bar i{display:block;height:100%;border-radius:6px}
+.dd-tbl{margin-top:8px}
+.dd-tbl>div{display:flex;justify-content:space-between;gap:12px;padding:10px 2px;border-bottom:1px solid #18243f;font-size:13px}
 .dd-tbl>div:last-child{border-bottom:0}
-.dd-tbl span{color:#99a}.dd-tbl b{font-weight:700;color:#e8ecf8}
-.dd-total{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.035)}
+.dd-tbl span{color:#8a94ab}.dd-tbl b{font-weight:800;color:#eef2ff;text-align:right}
+.dd-tbl b span{color:inherit}.dd-tbl b span.pos{color:#34d399}.dd-tbl b span.neg{color:#ff6b81}.dd-tbl b span.zero{color:#8a94ab}
+.dd-total{border-color:#2c3c66;background:#0e1730}
 .dd-donutwrap{display:flex;justify-content:center;margin:6px 0 14px}
-.dd-donut{width:180px;height:180px}
-.dd-nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
-.dd-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#dfe3f3;border-radius:8px;padding:9px 13px;font-size:12px;font-weight:600}
-.dd-btn:hover:not(:disabled){background:rgba(255,255,255,.09)}
-.dd-btn.next{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.3);color:#4ade80}
-.dd-btn.next:hover:not(:disabled){background:rgba(74,222,128,.18)}
+.dd-donut{width:190px;height:190px}
+.dd-nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid #1c2a47}
+.dd-btn{font-weight:700;padding:9px 13px}
+.dd-btn.back{color:#cfd8f3}
+.dd-btn.next{background:#1a2a55;border-color:#405a9a;color:#cfe0ff}
 .dd-btn:disabled{opacity:.4;cursor:default}
-@media(max-width:380px){.dd-crumb{padding:7px 6px;font-size:11.5px;gap:3px}.dd-crumbs{gap:3px}.dd-ihead strong{font-size:15px}}
+/* efek hover & tekan sama seperti tab Growth / Balance / Profit dan tombol Performance */
+.dd-crumb,.dd-lock,.dd-btn,.dd-item{transition:transform .25s cubic-bezier(.16,1,.3,1),background .25s ease,border-color .25s ease,box-shadow .25s ease}
+.dd-crumb:not(:disabled):hover,.dd-lock:hover,.dd-btn:not(:disabled):hover,.dd-item.click:hover,.dd-item.click:focus-visible{transform:translateY(-2px);box-shadow:0 8px 20px #5b7fff2b;border-color:#5c7fe0}
+.dd-crumb.on:hover{box-shadow:0 0 0 1px #4a68c8,0 8px 20px #5b7fff2b}
+.dd-crumb:not(:disabled):active,.dd-lock:active,.dd-btn:not(:disabled):active{transform:scale(.95)}
+.dd-item.click:active{transform:scale(.985)}
+@media(max-width:600px){.dd-crumb{padding:7px 7px;font-size:11.5px;gap:3px}.dd-crumbs{gap:4px;flex-wrap:nowrap}.dd-crumb i{font-size:11px}}
+@media(max-width:380px){.dd-crumb{padding:7px 5px;font-size:11px}.dd-crumbs{gap:3px}.dd-ihead strong{font-size:14.5px}}
 </style>
 </head>
 <body>
@@ -410,7 +420,7 @@ window.__hideSplash=function(){
 window.addEventListener("error",function(e){var b=document.getElementById("boot");if(b&&!window.__appMounted)b.textContent="Error: "+e.message;});
 "use strict";
 const { useEffect, useMemo, useRef, useState } = React;
-const APP_VERSION = '2.8.0';
+const APP_VERSION = '2.8.1';
 const ICONS = { "CandlePlus": [["path", { "d": "M5 3v3" }], ["rect", { "x": 3, "y": 6, "width": 4, "height": 11, "rx": 1 }], ["path", { "d": "M5 17v3" }], ["path", { "d": "M12 8v2" }], ["rect", { "x": 10, "y": 10, "width": 4, "height": 7, "rx": 1 }], ["path", { "d": "M12 17v2" }], ["path", { "d": "M19 3v6" }], ["path", { "d": "M16 6h6" }]], "Activity": [["polyline", { "points": "22 12 18 12 15 21 9 3 6 12 2 12" }]], "ArrowDownRight": [["path", { "d": "M7 7l10 10" }], ["path", { "d": "M17 7v10H7" }]], "ArrowUpRight": [["path", { "d": "M7 17L17 7" }], ["path", { "d": "M7 7h10v10" }]], "BarChart3": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M18 17V9" }], ["path", { "d": "M13 17V5" }], ["path", { "d": "M8 17v-3" }]], "BookOpen": [["path", { "d": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" }], ["path", { "d": "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" }]], "CalendarDays": [["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M16 2v4" }], ["path", { "d": "M8 2v4" }], ["path", { "d": "M3 10h18" }], ["path", { "d": "M8 14h.01" }], ["path", { "d": "M12 14h.01" }], ["path", { "d": "M16 14h.01" }], ["path", { "d": "M8 18h.01" }], ["path", { "d": "M12 18h.01" }], ["path", { "d": "M16 18h.01" }]], "Camera": [["path", { "d": "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z" }], ["circle", { "cx": 12, "cy": 13, "r": 3 }]], "ChevronDown": [["path", { "d": "M6 9l6 6 6-6" }]], "ChevronLeft": [["path", { "d": "M15 18l-6-6 6-6" }]], "ChevronRight": [["path", { "d": "M9 18l6-6-6-6" }]], "CircleHelp": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["path", { "d": "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }], ["path", { "d": "M12 17h.01" }]], "ClipboardPaste": [["path", { "d": "M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1z" }], ["path", { "d": "M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" }]], "Cloud": [["path", { "d": "M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z" }]], "Download": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M7 10l5 5 5-5" }], ["path", { "d": "M12 15V3" }]], "FileJson": [["path", { "d": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" }], ["path", { "d": "M14 2v6h6" }], ["path", { "d": "M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1" }], ["path", { "d": "M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1" }]], "Filter": [["path", { "d": "M22 3H2l8 9.46V19l4 2v-8.54z" }]], "LineChart": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M19 9l-5 5-4-4-3 3" }]], "Plus": [["path", { "d": "M5 12h14" }], ["path", { "d": "M12 5v14" }]], "Search": [["circle", { "cx": 11, "cy": 11, "r": 8 }], ["path", { "d": "M21 21l-4.3-4.3" }]], "Settings2": [["path", { "d": "M20 7h-9" }], ["path", { "d": "M14 17H5" }], ["circle", { "cx": 17, "cy": 17, "r": 3 }], ["circle", { "cx": 7, "cy": 7, "r": 3 }]], "Share2": [["circle", { "cx": 18, "cy": 5, "r": 3 }], ["circle", { "cx": 6, "cy": 12, "r": 3 }], ["circle", { "cx": 18, "cy": 19, "r": 3 }], ["path", { "d": "M8.59 13.51l6.83 3.98" }], ["path", { "d": "M15.41 6.51l-6.82 3.98" }]], "SlidersHorizontal": [["path", { "d": "M21 4h-7" }], ["path", { "d": "M10 4H3" }], ["path", { "d": "M21 12h-9" }], ["path", { "d": "M8 12H3" }], ["path", { "d": "M21 20h-5" }], ["path", { "d": "M12 20H3" }], ["path", { "d": "M14 2v4" }], ["path", { "d": "M8 10v4" }], ["path", { "d": "M16 18v4" }]], "Target": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["circle", { "cx": 12, "cy": 12, "r": 6 }], ["circle", { "cx": 12, "cy": 12, "r": 2 }]], "Trash2": [["path", { "d": "M3 6h18" }], ["path", { "d": "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" }], ["path", { "d": "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" }], ["path", { "d": "M10 11v6" }], ["path", { "d": "M14 11v6" }]], "TrendingDown": [["path", { "d": "M22 17l-8.5-8.5-5 5L2 7" }], ["path", { "d": "M16 17h6v-6" }]], "TrendingUp": [["path", { "d": "M22 7l-8.5 8.5-5-5L2 17" }], ["path", { "d": "M16 7h6v6" }]], "Upload": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M17 8l-5-5-5 5" }], ["path", { "d": "M12 3v12" }]], "UserRound": [["circle", { "cx": 12, "cy": 8, "r": 5 }], ["path", { "d": "M20 21a8 8 0 0 0-16 0" }]], "Wallet": [["path", { "d": "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" }], ["path", { "d": "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" }]], "X": [["path", { "d": "M18 6L6 18" }], ["path", { "d": "M6 6l12 12" }]], "Zap": [["path", { "d": "M13 2L3 14h9l-1 8 10-12h-9l1-8z" }]] };
 function Icon({ name, size = 24, strokeWidth = 2, className, style }) {
     const node = ICONS[name] || [];
@@ -1201,12 +1211,14 @@ function Donut({ wins, losses }) {
 }
 /* ===== v2.8.0 — Drill-down performa: Bulan > Minggu > Hari > Sesi > Win/Loss =====
    Menggantikan 4 kartu terpisah (Performa per minggu, per hari, per sesi, Distribusi win/loss).
-   Data: semua trade closed pada akun aktif. Mode Kunci = agregasi data dari semua bulan/minggu/hari. */
+   Data: semua trade closed pada akun aktif. Mode Kunci = agregasi data dari semua bulan/minggu/hari.
+   v2.8.1: warna & animasi mengikuti kartu lain (tab Growth/Balance), kotak info bulan/minggu/hari/sesi di semua level, % dan pips. */
 const DD_MON = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
 const DD_MONF = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 const DD_DAYS = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
 const DD_WKND = 'Akhir pekan (Sab–Min)';
-const DD_SCOL = { 'Asia': '#4ade80', 'London': '#60a5fa', 'New York': '#fbbf24', 'Overlap': '#a78bfa' };
+const DD_SCOL = { 'Asia': '#34d399', 'London': '#6b8dff', 'New York': '#f5b84b', 'Overlap': '#9b82ff' };
+const DD_LCOL = ['#6b8dff', '#9b82ff', '#f5b84b'];   // dot level: bulan (biru), minggu (ungu), hari (kuning) = warna kotak info
 const DD_LV = ['Bulan', 'Minggu', 'Hari', 'Sesi', 'Win/Loss'];
 const DD_LOCK_MSG = ['Menampilkan semua bulan', 'Data per nomor minggu dari semua bulan', 'Data per hari dari semua minggu', '4 sesi dengan data agregat dari semua hari', 'Distribusi win/loss agregat dari semua hari'];
 const DD_BEST = ['Bulan terbaik', 'Minggu terbaik', 'Hari terbaik', 'Sesi terbaik'];
@@ -1222,37 +1234,40 @@ function ddBuild(trades) {
             const di = (new Date(y, m, d, 12).getDay() + 6) % 7;
             const ses = SESSIONS.find(s => s.test(wib(t.date).hour));
             if (!ses) return;
-            out.push({ mk: `${y}-${dd2(m + 1)}`, iso, wk: Math.floor((d - 1 + off) / 7) + 1, di: Math.min(di, 5), day: di < 5 ? DD_DAYS[di] : DD_WKND, ses: ses.name, pnl: Number(t.pnl) || 0 });
+            out.push({ mk: `${y}-${dd2(m + 1)}`, iso, wk: Math.floor((d - 1 + off) / 7) + 1, di: Math.min(di, 5), day: di < 5 ? DD_DAYS[di] : DD_WKND, ses: ses.name, pnl: Number(t.pnl) || 0, pips: pipsOf(t) || 0 });
         } catch (e) { /* tanggal rusak: lewati */ }
     });
     return out;
 }
 function ddStat(rs) {
     const w = rs.filter(r => r.pnl > 0), l = rs.filter(r => r.pnl < 0);
-    const sum = a => a.reduce((x, r) => x + r.pnl, 0);
+    const sum = (a, k = 'pnl') => a.reduce((x, r) => x + r[k], 0);
     return {
-        n: rs.length, wins: w.length, losses: l.length, wr: rs.length ? w.length / rs.length * 100 : 0, profit: sum(rs),
+        n: rs.length, wins: w.length, losses: l.length, wr: rs.length ? w.length / rs.length * 100 : 0, profit: sum(rs), pips: sum(rs, 'pips'),
         avgWin: w.length ? sum(w) / w.length : 0, avgLoss: l.length ? sum(l) / l.length : 0,
-        best: w.length ? Math.max(...w.map(r => r.pnl)) : 0, worst: l.length ? Math.min(...l.map(r => r.pnl)) : 0,
-        days: new Set(rs.map(r => r.iso)).size
+        days: new Set(rs.map(r => r.iso)).size, weeks: new Set(rs.map(r => r.mk + r.wk)).size, sessions: new Set(rs.map(r => r.ses)).size
     };
 }
+/* kotak info kecil: day (abu), week (ungu), month (biru), ses (sesi, ada titik warna) */
 function ddTagList(rs, kinds, mkShort) {
     const out = [];
-    if (kinds.includes('day')) { const seen = new Map(); rs.forEach(r => seen.set(r.di, r.day === DD_WKND ? 'Sab–Min' : r.day)); [...seen.keys()].sort((a, b) => a - b).forEach(k => out.push({ cls: 'day', text: seen.get(k) })); }
-    if (kinds.includes('week')) [...new Set(rs.map(r => r.wk))].sort((a, b) => a - b).forEach(w => out.push({ cls: 'week', text: `Minggu ke-${w}` }));
-    if (kinds.includes('month')) [...new Set(rs.map(r => r.mk))].sort().forEach(mk => out.push({ cls: 'month', text: mkShort(mk) }));
+    kinds.forEach(kind => {
+        if (kind === 'day') { const seen = new Map(); rs.forEach(r => seen.set(r.di, r.day === DD_WKND ? 'Sab–Min' : r.day)); [...seen.keys()].sort((a, b) => a - b).forEach(k => out.push({ cls: 'day', text: seen.get(k) })); }
+        else if (kind === 'week') [...new Set(rs.map(r => r.wk))].sort((a, b) => a - b).forEach(w => out.push({ cls: 'week', text: `Minggu ke-${w}` }));
+        else if (kind === 'month') [...new Set(rs.map(r => r.mk))].sort().forEach(mk => out.push({ cls: 'month', text: mkShort(mk) }));
+        else if (kind === 'ses') SESSIONS.map(s => s.name).filter(n => rs.some(r => r.ses === n)).forEach(n => out.push({ cls: 'ses', text: n, dot: DD_SCOL[n] }));
+    });
     return out;
 }
 function DdDonut({ st }) {
     const h = React.createElement;
     const r = 70, c = 2 * Math.PI * r, tot = st.n;
     const wA = tot ? c * st.wins / tot : 0, lA = tot ? c * st.losses / tot : 0;
-    const col = !tot ? '#8590a8' : st.wr >= 50 ? '#4ade80' : '#f87171';
+    const col = !tot ? '#8590a8' : st.wr >= 50 ? '#34d399' : '#ff6b81';
     return h('svg', { viewBox: '0 0 180 180', className: 'dd-donut', role: 'img', 'aria-label': `Win rate ${st.wr.toFixed(1)}%` },
-        h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#252e48', strokeWidth: 24 }),
-        lA > 0 && h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#f87171', strokeWidth: 24, strokeDasharray: `${lA} ${c}`, strokeDashoffset: -wA, transform: 'rotate(-90 90 90)' }),
-        wA > 0 && h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#4ade80', strokeWidth: 24, strokeDasharray: `${wA} ${c}`, transform: 'rotate(-90 90 90)' }),
+        h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#233252', strokeWidth: 24 }),
+        lA > 0 && h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#ff6b81', strokeWidth: 24, strokeDasharray: `${lA} ${c}`, strokeDashoffset: -wA, transform: 'rotate(-90 90 90)' }),
+        wA > 0 && h('circle', { cx: 90, cy: 90, r, fill: 'none', stroke: '#34d399', strokeWidth: 24, strokeDasharray: `${wA} ${c}`, transform: 'rotate(-90 90 90)' }),
         h('text', { x: 90, y: 100, textAnchor: 'middle', fontSize: 28, fontWeight: 800, fill: col }, `${st.wr.toFixed(1)}%`));
 }
 function DrillDown({ account, trades }) {
@@ -1260,6 +1275,11 @@ function DrillDown({ account, trades }) {
     const fm = n => money(n, account.currency);
     const sg = n => n > 0 ? `+${fm(n)}` : n < 0 ? `-${fm(Math.abs(n))}` : fm(0);
     const tn = n => n > 0 ? 'pos' : n < 0 ? 'neg' : 'zero';
+    // modal awal sama seperti kartu lain (Gain / Monthly gain): saldo - deposit + penarikan
+    const hist = account.capitalHistory || [];
+    const startBal = Math.max((account.balance || 0) - sumOf(hist.filter(x => x.type !== 'withdraw'), x => x.amount) + sumOf(hist.filter(x => x.type === 'withdraw'), x => x.amount), 1);
+    const pct = v => `${v > 0 ? '+' : ''}${(v / startBal * 100).toFixed(2)}%`;
+    const pipTxt = v => `${v > 0 ? '+' : ''}${v.toFixed(1)} pips`;
     const recs = useMemo(() => ddBuild((trades || []).filter(t => t.status === 'closed')), [trades]);
     const [level, setLevel] = useState(0);
     const [locked, setLocked] = useState(false);
@@ -1295,53 +1315,57 @@ function DrillDown({ account, trades }) {
 
     // ----- susun daftar kartu untuk level aktif -----
     const mkItem = (key, o, rs) => ({ key, st: ddStat(rs), tags: [], ...o });
+    const tg = (rs, kinds) => ddTagList(rs, kinds, mkShort);
     let items = [], title = '', small = '';
     const sesNames = SESSIONS.map(s => s.name), sesHrs = n => SESSIONS.find(s => s.name === n).hrs + ' WIB';
     const dayNames = rs => [...DD_DAYS, ...(rs.some(r => r.day === DD_WKND) ? [DD_WKND] : [])];
     if (lv === 0) {
+        // Bulan: berapa minggu, hari, sesi (kotak info) + posisi, WR, %, profit
         title = 'Performa per bulan';
         const ys = [...new Set(mks.map(k => k.slice(0, 4)))];
         small = ys.length === 1 ? ys[0] : `${ys[0]}–${ys[ys.length - 1]}`;
-        items = mks.map(mk => mkItem(mk, { dot: '#4ade80', title: mkName(mk), sub: `${weeksIn(mk)} minggu` }, recs.filter(r => r.mk === mk)));
+        items = mks.map(mk => { const rs = recs.filter(r => r.mk === mk); const st = ddStat(rs); return mkItem(mk, { dot: DD_LCOL[0], title: mkName(mk), tags: [{ cls: 'cnt', text: `${st.weeks} minggu` }, { cls: 'cnt', text: `${st.days} hari` }, { cls: 'cnt', text: `${st.sessions} sesi` }] }, rs); });
     } else if (lv === 1) {
+        // Minggu: bulan & hari apa saja, sesi apa saja + posisi, WR, %, profit
         title = 'Performa per minggu';
         if (locked) {
             small = 'Agregasi Semua Bulan';
             const maxW = Math.max(...mks.map(weeksIn));
-            items = Array.from({ length: maxW }, (_, i) => { const rs = recs.filter(r => r.wk === i + 1); const dn = ddTagList(rs, ['day'], mkShort).map(x => x.text); return mkItem(i + 1, { dot: '#60a5fa', title: `Minggu ke-${i + 1}`, note: 'Semua Bulan', sub: dn.length ? dn.join(', ') : 'Tidak ada trade', tags: ddTagList(rs, ['month'], mkShort) }, rs); });
+            items = Array.from({ length: maxW }, (_, i) => { const rs = recs.filter(r => r.wk === i + 1); return mkItem(i + 1, { dot: DD_LCOL[1], title: `Minggu ke-${i + 1}`, note: 'Semua Bulan', sub: rs.length ? '' : 'Tidak ada trade', tags: tg(rs, ['month', 'day', 'ses']) }, rs); });
         } else {
             small = mkName(curM);
-            items = Array.from({ length: weeksIn(curM) }, (_, i) => mkItem(i + 1, { dot: '#60a5fa', title: `Minggu ke-${i + 1}`, sub: wkRange(curM, i + 1) }, recs.filter(r => r.mk === curM && r.wk === i + 1)));
+            items = Array.from({ length: weeksIn(curM) }, (_, i) => { const rs = recs.filter(r => r.mk === curM && r.wk === i + 1); return mkItem(i + 1, { dot: DD_LCOL[1], title: `Minggu ke-${i + 1}`, sub: wkRange(curM, i + 1), tags: tg(rs, ['month', 'day', 'ses']) }, rs); });
         }
     } else if (lv === 2) {
+        // Hari: bulan, minggu, dan sesi apa saja + WR, %, profit
         title = 'Performa per hari';
         if (locked) {
             small = 'Agregasi Semua Minggu';
-            items = dayNames(recs).map(d => { const rs = recs.filter(r => r.day === d); const wt = ddTagList(rs, ['week'], mkShort), mt = ddTagList(rs, ['month'], mkShort); return mkItem(d, { dot: '#fbbf24', title: d, note: 'Semua Minggu', sub: rs.length ? `${wt.length} minggu · ${mt.map(x => x.text).join(', ')}` : 'Tidak ada trade', tags: [...wt, ...mt] }, rs); });
+            items = dayNames(recs).map(d => { const rs = recs.filter(r => r.day === d); return mkItem(d, { dot: DD_LCOL[2], title: d, note: 'Semua Minggu', sub: rs.length ? '' : 'Tidak ada trade', tags: tg(rs, ['month', 'week', 'ses']) }, rs); });
         } else {
             small = `Minggu ke-${curW} · ${mkShort(curM)}`;
             const scope = recs.filter(r => r.mk === curM && r.wk === curW);
-            items = dayNames(scope).map(d => { const rs = scope.filter(r => r.day === d); const st = ddStat(rs); return mkItem(d, { dot: '#fbbf24', title: d, sub: st.n ? `${st.days} hari trading` : 'Belum ada trade' }, rs); });
+            items = dayNames(scope).map(d => { const rs = scope.filter(r => r.day === d); return mkItem(d, { dot: DD_LCOL[2], title: d, sub: rs.length ? '' : 'Belum ada trade', tags: tg(rs, ['month', 'week', 'ses']) }, rs); });
         }
     } else if (lv === 3) {
         title = 'Performa per sesi';
         if (locked) {
             small = 'Agregasi Semua Hari';
-            items = sesNames.map(n => { const rs = recs.filter(r => r.ses === n); return mkItem(n, { dot: DD_SCOL[n], title: n, sub: sesHrs(n), tags: ddTagList(rs, ['day', 'week', 'month'], mkShort) }, rs); });
+            items = sesNames.map(n => { const rs = recs.filter(r => r.ses === n); return mkItem(n, { dot: DD_SCOL[n], title: n, sub: sesHrs(n), tags: tg(rs, ['day', 'week', 'month']) }, rs); });
         } else {
             small = curD === DD_WKND ? 'Akhir pekan' : curD;
             const scope = recs.filter(r => r.mk === curM && r.wk === curW && r.day === curD);
-            items = sesNames.map(n => mkItem(n, { dot: DD_SCOL[n], title: n, sub: sesHrs(n) }, scope.filter(r => r.ses === n))).filter(i => i.st.n > 0);
+            items = sesNames.map(n => { const rs = scope.filter(r => r.ses === n); return mkItem(n, { dot: DD_SCOL[n], title: n, sub: sesHrs(n), tags: tg(rs, ['day', 'week', 'month']) }, rs); }).filter(i => i.st.n > 0);
         }
     } else {
         title = 'Distribusi win / loss';
         if (locked) {
             small = 'Agregasi Semua Hari';
-            items = sesNames.map(n => { const rs = recs.filter(r => r.ses === n); return mkItem(n, { dot: DD_SCOL[n], title: n, sub: sesHrs(n), tags: ddTagList(rs, ['day', 'week', 'month'], mkShort) }, rs); });
+            items = sesNames.map(n => { const rs = recs.filter(r => r.ses === n); return mkItem(n, { dot: DD_SCOL[n], title: n, sub: sesHrs(n), tags: tg(rs, ['day', 'week', 'month']) }, rs); });
         } else {
             small = `${curS} — ${curD === DD_WKND ? 'Akhir pekan' : curD}`;
             const rs = recs.filter(r => r.mk === curM && r.wk === curW && r.day === curD && r.ses === curS);
-            items = [mkItem(curS, { dot: DD_SCOL[curS], title: curS, sub: sesHrs(curS) }, rs)];
+            items = [mkItem(curS, { dot: DD_SCOL[curS], title: curS, sub: sesHrs(curS), tags: tg(rs, ['day', 'week', 'month']) }, rs)];
         }
     }
 
@@ -1370,21 +1394,22 @@ function DrillDown({ account, trades }) {
 
     // ----- tampilan -----
     const maxN = Math.max(1, ...items.map(i => i.st.n));
-    const tagEls = tags => tags && tags.length > 0 ? h('div', { className: 'dd-tags' }, tags.map((t, k) => h('span', { key: k, className: 'dd-tag ' + t.cls }, t.text))) : null;
-    const rowsOf = (st, split) => [
-        ...(split ? [['Menang', String(st.wins), ''], ['Kalah', String(st.losses), '']] : [['Menang / Kalah', `${st.wins} / ${st.losses}`, '']]),
+    const tagEls = tags => tags && tags.length > 0 ? h('div', { className: 'dd-tags' }, tags.map((t, k) => h('span', { key: k, className: 'dd-tag ' + t.cls }, t.dot ? h('i', { style: { background: t.dot } }) : null, t.text))) : null;
+    // data Win/Loss: Win / Loss, Win Rate, Avg. Win / Loss, Perolehan Pips
+    const rowsOf = st => [
+        ['Win / Loss', `${st.wins} / ${st.losses}`, ''],
         ['Win Rate', `${st.wr.toFixed(1)}%`, st.n ? (st.wr >= 50 ? 'pos' : 'neg') : 'zero'],
-        ['Rata-rata win', sg(st.avgWin), tn(st.avgWin)], ['Rata-rata loss', sg(st.avgLoss), tn(st.avgLoss)],
-        ['Trade terbaik', sg(st.best), tn(st.best)], ['Trade terburuk', sg(st.worst), tn(st.worst)]
+        ['Avg. Win / Loss', h(React.Fragment, null, h('span', { className: tn(st.avgWin) }, sg(st.avgWin)), ' / ', h('span', { className: tn(st.avgLoss) }, sg(st.avgLoss))), ''],
+        ['Perolehan Pips', pipTxt(st.pips), tn(st.pips)]
     ];
     const table = rows => h('div', { className: 'dd-tbl' }, rows.map(([l, v, t]) => h('div', { key: l }, h('span', null, l), h('b', { className: t }, v))));
-    const head = (i, withSmall) => h('div', { className: 'dd-ihead' }, h('i', { className: 'dd-dot', style: { background: i.dot } }), h('strong', null, i.title), withSmall && i.sub ? h('span', { className: 'dd-small' }, i.sub) : null);
+    const head = i => h('div', { className: 'dd-ihead' }, h('i', { className: 'dd-dot', style: { background: i.dot } }), h('strong', null, i.title), i.sub ? h('span', { className: 'dd-small' }, i.sub) : null);
 
     let hl = null;
-    if (locked) hl = h('div', { className: 'dd-hl' }, `🔒 Mode Kunci: ${DD_LOCK_MSG[lv]}`);
+    if (locked) hl = h('div', { className: 'dd-info' }, `🔒 Mode Kunci: ${DD_LOCK_MSG[lv]}`);
     else if (lv < 4) {
         const c = items.filter(i => i.st.n > 0);
-        if (c.length) { const b = c.reduce((a, x) => x.st.profit > a.st.profit ? x : a); hl = h('div', { className: 'dd-hl' }, `🏆 ${DD_BEST[lv]}: `, h('b', null, b.title), ` · ${sg(b.st.profit)} · WR ${Math.round(b.st.wr)}% · ${b.st.n} posisi`); }
+        if (c.length) { const b = c.reduce((a, x) => x.st.profit > a.st.profit ? x : a); hl = h('div', { className: 'dd-best' }, `🏆 ${DD_BEST[lv]}: `, h('b', null, b.title), ` · ${sg(b.st.profit)} · WR ${Math.round(b.st.wr)}% · ${b.st.n} posisi`); }
     }
 
     let body;
@@ -1395,24 +1420,24 @@ function DrillDown({ account, trades }) {
                 h('div', { className: 'dd-ihead' }, h('i', { className: 'dd-dot', style: { background: i.dot } }), h('strong', null, i.title), i.note ? h('span', { className: 'dd-small' }, `(${i.note})`) : null),
                 i.sub ? h('div', { className: 'dd-sub' }, i.sub) : null,
                 tagEls(i.tags),
-                h('div', { className: 'dd-row' }, h('span', { className: 'dd-meta' }, h('span', null, `${i.st.n} posisi`), h('span', null, `${Math.round(i.st.wr)}% WR`)), h('b', { className: 'dd-pr ' + tn(i.st.profit) }, sg(i.st.profit))),
-                h('div', { className: 'dd-bar' }, h('i', { style: { width: `${i.st.n ? Math.max(3, i.st.n / maxN * 100) : 0}%`, background: i.st.profit < 0 ? '#f87171' : '#4ade80' } })));
+                h('div', { className: 'dd-row' },
+                    h('span', { className: 'dd-meta' }, h('span', null, `${i.st.n} posisi`), h('span', null, `${Math.round(i.st.wr)}% WR`), h('span', { className: tn(i.st.profit) }, pct(i.st.profit))),
+                    h('b', { className: 'dd-pr ' + tn(i.st.profit) }, sg(i.st.profit))),
+                h('div', { className: 'dd-bar' }, h('i', { style: { width: `${i.st.n ? Math.max(3, i.st.n / maxN * 100) : 0}%`, background: i.st.profit < 0 ? '#ff6b81' : '#34d399' } })));
         });
     } else if (locked) {
         const total = ddStat(recs);
-        body = [...items.map(i => h('div', { key: i.key, className: 'dd-item' },
-            head(i, true), tagEls(i.tags), table(rowsOf(i.st, false)))),
+        body = [...items.map(i => h('div', { key: i.key, className: 'dd-item' }, head(i), tagEls(i.tags), table(rowsOf(i.st)))),
         h('div', { key: 'total', className: 'dd-item dd-total' },
-            h('div', { className: 'dd-ihead' }, h('i', { className: 'dd-dot', style: { background: '#e0e0e0' } }), h('strong', null, 'Ringkasan Total'), h('span', { className: 'dd-small' }, 'semua sesi')),
-            table([['Total posisi', String(total.n), ''], ...rowsOf(total, false), ['Profit', sg(total.profit), tn(total.profit)]]))];
+            h('div', { className: 'dd-ihead' }, h('i', { className: 'dd-dot', style: { background: '#eef2ff' } }), h('strong', null, 'Ringkasan Total'), h('span', { className: 'dd-small' }, 'semua sesi')),
+            table([['Total posisi', String(total.n), ''], ...rowsOf(total), ['Profit', `${sg(total.profit)} · ${pct(total.profit)}`, tn(total.profit)]]))];
     } else {
         const i = items[0];
         body = [h('div', { key: 'donut', className: 'dd-donutwrap' }, h(DdDonut, { st: i.st })),
-        h('div', { key: 'card', className: 'dd-item' }, head(i, true), table(rowsOf(i.st, true)))];
+        h('div', { key: 'card', className: 'dd-item' }, head(i), tagEls(i.tags), table(rowsOf(i.st)))];
     }
 
-    const crumbs = DD_LV.map((l, i) => h(React.Fragment, { key: l },
-        h('button', { type: 'button', className: 'dd-crumb' + (i === lv ? ' on' : crumbOn(i) ? ' seen' : ''), disabled: !crumbOn(i), onClick: () => crumbOn(i) && setLevel(i) }, l, i < 4 ? h('i', null, '›') : null)));
+    const crumbs = DD_LV.map((l, i) => h('button', { key: l, type: 'button', className: 'dd-crumb' + (i === lv ? ' on' : crumbOn(i) ? ' seen' : ''), disabled: !crumbOn(i), onClick: () => crumbOn(i) && setLevel(i) }, l, i < 4 ? h('i', null, '›') : null));
 
     return h('div', { className: 'pe-card dd', ref: cardRef },
         h('div', { className: 'dd-crumbs' }, crumbs),
@@ -1422,7 +1447,7 @@ function DrillDown({ account, trades }) {
         h('div', { className: 'dd-nav' },
             h('button', { type: 'button', className: 'dd-btn back', disabled: lv === 0, onClick: goBack }, lv === 0 ? '← Kembali' : `← Kembali ke ${DD_LV[lv - 1]}`),
             h('button', { type: 'button', className: 'dd-btn next', disabled: lv >= 4, onClick: goNext }, lv >= 4 ? 'Selesai ✓' : 'Selanjutnya →')),
-        h('p', { className: 'pe-note' }, 'Minggu mengikuti baris pada Kalender (Senin–Minggu); hari dihitung dari tanggal entry; sesi dari jam entry (WIB): Asia 06–12, London 12–20, New York 20–04, Overlap 04–06. Tombol Kunci menampilkan data gabungan dari semua bulan/minggu/hari.'));
+        h('p', { className: 'pe-note' }, 'Minggu mengikuti baris pada Kalender (Senin–Minggu); hari dihitung dari tanggal entry; sesi dari jam entry (WIB): Asia 06–12, London 12–20, New York 20–04, Overlap 04–06. Persen (%) dihitung dari modal awal, sama seperti Gain dan Monthly gain. Tombol Kunci menampilkan data gabungan dari semua bulan/minggu/hari.'));
 }
 function PerfExtra({ account, trades, filtered, total, maxDd, onSelectDate, view, onPickMonth, onResetAll, rangeText, mode = 'all', advancedStats }) {
     const cur = account.currency;
