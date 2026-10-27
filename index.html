@@ -416,6 +416,21 @@ html,body{background:#090d18}
 .acct-inline .as-edit-row input{margin-top:8px}
 .acct-inline form>.primary-btn{width:100%;justify-content:center;margin-top:6px}
 .acct-inline .form-grid{margin-top:4px}
+/* ===== v2.8.11 — Kartu Profitability: geser ke samping, 10 data per slide ===== */
+.adv-segs{display:flex;gap:6px;padding:4px 14px 0}
+.adv-segs button{flex:1;height:18px;background:none;border:0;padding:7px 0;margin:0;display:flex;align-items:center}
+.adv-segs button i{display:block;width:100%;height:4px;border-radius:3px;background:#26334e}
+.adv-segs button.on i{background:#f5b84b}
+.adv-slides{display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+.adv-slides::-webkit-scrollbar{display:none}
+.adv-slide{flex:0 0 100%;min-width:100%;scroll-snap-align:start;scroll-snap-stop:always;box-sizing:border-box}
+.adv-slide .adv-row:last-child{border-bottom:0}
+.adv-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 18px 14px;border-top:1px solid #1c2a47;font:500 11px 'DM Mono',monospace;letter-spacing:.12em;color:#7d8bab}
+.adv-next{background:none;border:0;color:#f5b84b;font:inherit;letter-spacing:.14em;padding:6px 0 6px 12px}
+/* ===== v2.8.11 — Menu bawah bersembunyi saat scroll ke bawah, muncul lagi di kepala halaman ===== */
+.bottom-nav{transition:transform .22s ease!important;will-change:transform}
+.bottom-nav.nav-hidden{transform:translateY(110%)}
+body.popup-open .bottom-nav,body.confirm-open .bottom-nav{transform:none!important}
 /* halaman Tambah trade: gaya kolom form sama seperti saat masih berbentuk pop up */
 .add-page textarea{display:block;width:100%;min-height:70px;resize:vertical;margin-top:6px;background:#0c1322;border:1px solid #26334e;color:#edf2ff;border-radius:9px;padding:10px 11px;outline:none;font-family:inherit;font-size:13px}
 .add-page textarea:focus{border-color:#597cff}
@@ -470,7 +485,7 @@ window.__hideSplash=function(){
 window.addEventListener("error",function(e){var b=document.getElementById("boot");if(b&&!window.__appMounted)b.textContent="Error: "+e.message;});
 "use strict";
 const { useEffect, useMemo, useRef, useState } = React;
-const APP_VERSION = '2.8.10';
+const APP_VERSION = '2.8.11';
 const ICONS = { "CandlePlus": [["path", { "d": "M5 3v3" }], ["rect", { "x": 3, "y": 6, "width": 4, "height": 11, "rx": 1 }], ["path", { "d": "M5 17v3" }], ["path", { "d": "M12 8v2" }], ["rect", { "x": 10, "y": 10, "width": 4, "height": 7, "rx": 1 }], ["path", { "d": "M12 17v2" }], ["path", { "d": "M19 3v6" }], ["path", { "d": "M16 6h6" }]], "Activity": [["polyline", { "points": "22 12 18 12 15 21 9 3 6 12 2 12" }]], "ArrowDownRight": [["path", { "d": "M7 7l10 10" }], ["path", { "d": "M17 7v10H7" }]], "ArrowUpRight": [["path", { "d": "M7 17L17 7" }], ["path", { "d": "M7 7h10v10" }]], "BarChart3": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M18 17V9" }], ["path", { "d": "M13 17V5" }], ["path", { "d": "M8 17v-3" }]], "BookOpen": [["path", { "d": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" }], ["path", { "d": "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" }]], "CalendarDays": [["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M16 2v4" }], ["path", { "d": "M8 2v4" }], ["path", { "d": "M3 10h18" }], ["path", { "d": "M8 14h.01" }], ["path", { "d": "M12 14h.01" }], ["path", { "d": "M16 14h.01" }], ["path", { "d": "M8 18h.01" }], ["path", { "d": "M12 18h.01" }], ["path", { "d": "M16 18h.01" }]], "Camera": [["path", { "d": "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z" }], ["circle", { "cx": 12, "cy": 13, "r": 3 }]], "ChevronDown": [["path", { "d": "M6 9l6 6 6-6" }]], "ChevronLeft": [["path", { "d": "M15 18l-6-6 6-6" }]], "ChevronRight": [["path", { "d": "M9 18l6-6-6-6" }]], "CircleHelp": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["path", { "d": "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }], ["path", { "d": "M12 17h.01" }]], "ClipboardPaste": [["path", { "d": "M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1z" }], ["path", { "d": "M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" }]], "Cloud": [["path", { "d": "M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z" }]], "Download": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M7 10l5 5 5-5" }], ["path", { "d": "M12 15V3" }]], "FileJson": [["path", { "d": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" }], ["path", { "d": "M14 2v6h6" }], ["path", { "d": "M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1" }], ["path", { "d": "M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1" }]], "Filter": [["path", { "d": "M22 3H2l8 9.46V19l4 2v-8.54z" }]], "LineChart": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M19 9l-5 5-4-4-3 3" }]], "Plus": [["path", { "d": "M5 12h14" }], ["path", { "d": "M12 5v14" }]], "Search": [["circle", { "cx": 11, "cy": 11, "r": 8 }], ["path", { "d": "M21 21l-4.3-4.3" }]], "Settings2": [["path", { "d": "M20 7h-9" }], ["path", { "d": "M14 17H5" }], ["circle", { "cx": 17, "cy": 17, "r": 3 }], ["circle", { "cx": 7, "cy": 7, "r": 3 }]], "Share2": [["circle", { "cx": 18, "cy": 5, "r": 3 }], ["circle", { "cx": 6, "cy": 12, "r": 3 }], ["circle", { "cx": 18, "cy": 19, "r": 3 }], ["path", { "d": "M8.59 13.51l6.83 3.98" }], ["path", { "d": "M15.41 6.51l-6.82 3.98" }]], "SlidersHorizontal": [["path", { "d": "M21 4h-7" }], ["path", { "d": "M10 4H3" }], ["path", { "d": "M21 12h-9" }], ["path", { "d": "M8 12H3" }], ["path", { "d": "M21 20h-5" }], ["path", { "d": "M12 20H3" }], ["path", { "d": "M14 2v4" }], ["path", { "d": "M8 10v4" }], ["path", { "d": "M16 18v4" }]], "Target": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["circle", { "cx": 12, "cy": 12, "r": 6 }], ["circle", { "cx": 12, "cy": 12, "r": 2 }]], "Trash2": [["path", { "d": "M3 6h18" }], ["path", { "d": "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" }], ["path", { "d": "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" }], ["path", { "d": "M10 11v6" }], ["path", { "d": "M14 11v6" }]], "TrendingDown": [["path", { "d": "M22 17l-8.5-8.5-5 5L2 7" }], ["path", { "d": "M16 17h6v-6" }]], "TrendingUp": [["path", { "d": "M22 7l-8.5 8.5-5-5L2 17" }], ["path", { "d": "M16 7h6v6" }]], "Upload": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M17 8l-5-5-5 5" }], ["path", { "d": "M12 3v12" }]], "UserRound": [["circle", { "cx": 12, "cy": 8, "r": 5 }], ["path", { "d": "M20 21a8 8 0 0 0-16 0" }]], "Wallet": [["path", { "d": "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" }], ["path", { "d": "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" }]], "X": [["path", { "d": "M18 6L6 18" }], ["path", { "d": "M6 6l12 12" }]], "Zap": [["path", { "d": "M13 2L3 14h9l-1 8 10-12h-9l1-8z" }]] };
 Object.assign(ICONS, {
     "Calendar": [["path", { "d": "M8 2v4" }], ["path", { "d": "M16 2v4" }], ["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M3 10h18" }]],
@@ -593,6 +608,8 @@ function askConfirm(msg, okLabel = 'Ya, hapus', danger = true) {
         const o = document.createElement('div');
         o.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:var(--nav-h,75px);background:#10182a;z-index:99999;display:flex;align-items:center;justify-content:center;padding:max(24px,env(safe-area-inset-top,0px)) 24px 24px';
         o.setAttribute('data-confirm', '1');
+        document.body.classList.add('confirm-open');
+        new MutationObserver((_, ob) => { if (!document.body.contains(o)) { ob.disconnect(); if (!document.querySelector('[data-confirm]')) document.body.classList.remove('confirm-open'); } }).observe(document.body, { childList: true });
         o.addEventListener('confirm-cancel', () => { o.remove(); resolve(false); });
         const b = document.createElement('div');
         b.style.cssText = 'max-width:420px;width:100%;color:#eef2ff;font-size:15px;line-height:1.6;text-align:center';
@@ -721,6 +738,7 @@ function App() {
     const [customStart, setCustomStart] = useState('');
     const [customEnd, setCustomEnd] = useState('');
     const [showCalendar, setShowCalendar] = useState(false);
+    const [navHidden, setNavHidden] = useState(false);
     const [showAccount, setShowAccount] = useState(false);
     const [accountMode, setAccountMode] = useState('manage');
     const [showAdd, setShowAdd] = useState(false);
@@ -742,6 +760,14 @@ function App() {
     };
     useEffect(() => { if (window.__hideSplash) window.__hideSplash(); }, []);
     useEffect(() => { setExpanded(null); }, [tab]);
+    useEffect(() => { const lastY = new WeakMap(); let lastEl = null; const onScroll = e => { const t = e.target === document ? document.documentElement : e.target; if (!t || t.nodeType !== 1)
+        return; if (t.closest && t.closest('.modal-backdrop,.dp-sheet,.tsel-sheet,[data-confirm]'))
+        return; const y = t === document.documentElement ? (window.scrollY || t.scrollTop || 0) : t.scrollTop; const prev = lastY.get(t) || 0; lastY.set(t, y); if (y === prev)
+        return; lastEl = t; if (y <= 70)
+        setNavHidden(false);
+    else if (y > prev + 6)
+        setNavHidden(true); }; const onClick = () => setTimeout(() => { if (lastEl && !document.body.contains(lastEl)) { lastEl = null; setNavHidden(false); } }, 60); document.addEventListener('scroll', onScroll, { passive: true, capture: true }); document.addEventListener('click', onClick, true); return () => { document.removeEventListener('scroll', onScroll, true); document.removeEventListener('click', onClick, true); }; }, []);
+    useEffect(() => { document.body.classList.toggle('popup-open', !!(showAdd || editingTrade || closingTrade || showAccount)); }, [showAdd, editingTrade, closingTrade, showAccount]);
     useEffect(() => { const f = () => { const n = document.querySelector('.bottom-nav'); if (n) document.documentElement.style.setProperty('--nav-h', n.offsetHeight + 'px'); }; f(); window.addEventListener('resize', f); return () => window.removeEventListener('resize', f); }, []);
     const activeAccount = accounts.find(a => a.id === activeAccountId) || accounts[0];
     const trades = (activeAccount === null || activeAccount === void 0 ? void 0 : activeAccount.trades) || [];
@@ -757,7 +783,7 @@ function App() {
         return; const delta = data.type === 'withdraw' ? -amount : amount; const updated = accounts.map(a => a.id === activeAccountId ? { ...a, balance: Number(a.balance || 0) + delta, capitalHistory: [...(a.capitalHistory || []), { id: uid('capital'), type: data.type, amount, date: data.date, note: data.note || '' }] } : a); persist(updated); }
     function updateAccount(patch) { persist(accounts.map(a => a.id === activeAccountId ? { ...a, ...patch } : a)); }
     function closePopups() { setShowAdd(false); setEditingTrade(null); setClosingTrade(null); setShowAccount(false); setAccountMode('manage'); document.querySelectorAll('[data-confirm]').forEach(n => n.dispatchEvent(new Event('confirm-cancel'))); }
-    function goTab(t) { closePopups(); setTab(t); window.scrollTo(0, 0); }
+    function goTab(t) { closePopups(); setNavHidden(false); setTab(t); window.scrollTo(0, 0); }
     function openAdd() { setEditingTrade(null); setClosingTrade(null); setShowAdd(true); }
     function addTrade(data) { const trade = { ...data, id: uid('trade'), entry: Number(data.entry), exit: data.exit ? Number(data.exit) : null, lots: Number(data.lots) || 0, sl: data.sl ? Number(data.sl) : null, tp: data.tp ? Number(data.tp) : null, fees: Number(data.fees) || 0, status: data.exit ? 'closed' : 'open', pnl: data.exit ? pnlFor(data, data.exit) : 0, review: data.review || '', screenshots: data.screenshots || [] }; persistTrades([trade, ...trades]); setShowAdd(false); setTab('journal'); }
     function closeTrade(data) { const trade = trades.find(t => t.id === data.tradeId); if (!trade)
@@ -813,7 +839,7 @@ function App() {
                 tab === 'journal' && React.createElement(Journal, { account: activeAccount, trades: trades, filters: journalFilters, setFilters: setJournalFilters, expanded: expanded, setExpanded: setExpanded, onAdd: openAdd, onDelete: deleteTrade, onClose: setClosingTrade, onEdit: setEditingTrade }),
                 tab === 'account' && React.createElement(AccountPage, { accounts: accounts, activeAccount: activeAccount, onSelect: selectAccount, onCreate: addAccount, onDelete: deleteAccount, onUpdate: updateAccount, onCapital: recordCapital, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson }),
                 tab === 'tools' && React.createElement(Tools, { account: activeAccount, trades: trades, onAdd: openAdd, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson, onNewAccount: () => setShowAccount(true) }))),
-        React.createElement("nav", { className: "bottom-nav" },
+        React.createElement("nav", { className: navHidden ? "bottom-nav nav-hidden" : "bottom-nav" },
             React.createElement(NavItem, { active: tab === 'performance' && !showAdd, onClick: () => goTab('performance'), icon: React.createElement(BarChart3, null), label: "Performance" }),
             React.createElement(NavItem, { active: tab === 'journal' && !showAdd, onClick: () => goTab('journal'), icon: React.createElement(BookOpen, null), label: "My Journal" }),
             React.createElement("button", { type: "button", className: showAdd ? "nav-item nav-add active" : "nav-item nav-add", "aria-label": "Tambah posisi", onClick: openAdd }, React.createElement(CandlePlus, null), React.createElement("span", null, "Add trade")),
@@ -1138,6 +1164,32 @@ function fmtHold(min) { if (!isFinite(min) || min <= 0)
     const h = Math.floor(min / 60), m = Math.round(min % 60);
     return m ? `${h} j ${m} mnt` : `${h} j`;
 } const d = Math.floor(min / 1440), h = Math.round((min % 1440) / 60); return h ? `${d} hr ${h} j` : `${d} hr`; }
+function AdvSlides({ rows, note }) {
+    const MAX = 10;
+    const count = Math.max(1, Math.ceil(rows.length / MAX));
+    const per = Math.ceil(rows.length / count);
+    const slides = [];
+    for (let i = 0; i < rows.length; i += per)
+        slides.push(rows.slice(i, i + per));
+    const [idx, setIdx] = useState(0);
+    const ref = useRef(null);
+    function onScroll() { const el = ref.current; if (!el || !el.clientWidth)
+        return; const i = Math.round(el.scrollLeft / el.clientWidth); if (i !== idx)
+        setIdx(i); }
+    function go(i) { const el = ref.current; if (el)
+        el.scrollTo({ left: i * el.clientWidth, behavior: 'smooth' }); setIdx(i); }
+    const last = slides.length - 1;
+    return React.createElement("div", { className: "adv-car" },
+        React.createElement("div", { className: "adv-segs" }, slides.map((_, i) => React.createElement("button", { type: "button", key: i, className: i <= idx ? 'on' : '', "aria-label": `Slide ${i + 1}`, onClick: () => go(i) }, React.createElement("i", null)))),
+        React.createElement("div", { className: "adv-slides", ref: ref, onScroll: onScroll }, slides.map((rs, i) => React.createElement("div", { className: "adv-slide", key: i },
+            rs.map(([l, v, t]) => React.createElement("div", { className: "adv-row", key: l },
+                React.createElement("span", null, l),
+                React.createElement("b", { className: t }, v)))))),
+        React.createElement("div", { className: "adv-foot" },
+            React.createElement("span", null, `${idx + 1} / ${slides.length}`),
+            React.createElement("button", { type: "button", className: "adv-next", onClick: () => go(idx >= last ? 0 : idx + 1) }, idx >= last ? '‹ ULANGI' : 'GESER ›')),
+        React.createElement("p", { className: "pe-note adv-note" }, note));
+}
 function AdvancedStats({ account, filtered, total, maxDd, hwm, view, part = 'all' }) {
     const cur = account.currency;
     const fm = n => money(n, cur);
@@ -1248,10 +1300,7 @@ function AdvancedStats({ account, filtered, total, maxDd, hwm, view, part = 'all
                         " L")),
                 React.createElement("div", { className: "adv-bar" },
                     React.createElement("i", { style: { width: `${wr}%` } }))),
-            rows.map(([l, v, t]) => React.createElement("div", { className: "adv-row", key: l },
-                React.createElement("span", null, l),
-                React.createElement("b", { className: t }, v))),
-            React.createElement("p", { className: "pe-note adv-note" }, "Pips dihitung dari harga entry ke harga close: XAUUSD / GOLD 1 pip = 0.10 poin harga, pair JPY 0.01, pair lain 0.0001, NAS100 dan BTCUSD 1 poin. Average/Max TP dari trade menang, SL dari trade kalah. Avg Hold dari waktu buka sampai close. Bulan mengikuti pilihan di Kalender dan Monthly gain."));
+            React.createElement(AdvSlides, { rows: rows, note: "Pips dihitung dari harga entry ke harga close: XAUUSD / GOLD 1 pip = 0.10 poin harga, pair JPY 0.01, pair lain 0.0001, NAS100 dan BTCUSD 1 poin. Average/Max TP dari trade menang, SL dari trade kalah. Avg Hold dari waktu buka sampai close. Bulan mengikuti pilihan di Kalender dan Monthly gain." }));
     if (part === 'title')
         return React.createElement("div", { className: "adv adv-title-only" }, title);
     if (part === 'card')

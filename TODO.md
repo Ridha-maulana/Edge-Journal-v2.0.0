@@ -294,3 +294,8 @@
 - Symbol baru GOLD (untuk broker yang tidak memakai XAUUSD): ukuran kontrak 100, 1 pip = 0.10, hitungan P&L, pips, dan statistik sama dengan XAUUSD.
 - Profil → Account management → Add account: label di atas kolom, kolom isi, tanggal, mata uang, dan tombol "Create account" bergaya sama seperti popup (lebih rapi).
 - File berubah: index.html, sw.js (cache edge-journal-v21), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.11 — Kartu Profitability bisa digeser, menu bawah hilang saat scroll
+- Advanced Statistics → kartu Profitability: daftar statistik sekarang berupa slide yang digeser ke samping (maksimal 10 data per slide, dibagi rata: 8/8/8/7). Garis penanda slide di atas (kuning), nomor slide dan tombol "GESER ›" di bawah; garis penanda juga bisa diketuk.
+- Menu bawah: otomatis tersembunyi saat halaman di-scroll ke bawah dan muncul lagi hanya setelah kembali ke kepala halaman. Tetap tampil saat popup Tambah/Edit/Hapus terbuka dan saat pindah halaman.
+- File berubah: index.html, sw.js (cache edge-journal-v22), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
