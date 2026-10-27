@@ -281,3 +281,16 @@
 - Menu bawah: kotak biru bersudut tumpul hanya muncul selama ditekan dan langsung hilang saat jari dilepas (tanpa animasi lanjutan). Menu halaman aktif tetap ditandai warna putih.
 - Menu dan halaman "Akun" diganti menjadi "Profil" (isi halaman tetap sama).
 - File berubah: index.html, sw.js (cache edge-journal-v19), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.9 — Account management di Profil, menu bawah tanpa animasi, menu tetap tampil di popup
+- Halaman Profil: kartu "Akun trading" (4 tombol) diganti kartu Account management lengkap (tab Accounts / Deposit / WD / Add account / Backup, daftar akun dengan pilih & hapus, kartu Active account + Edit nama). Urutan: Account management → Sinkron online → Cloud backup → Export & share.
+- Menu bawah: animasi kotak saat ditekan dihapus; hanya ikon + tulisan (halaman aktif tetap putih).
+- Menu bawah tetap tampil di bawah popup Tambah trade, Edit, Tutup posisi, dan konfirmasi Hapus (popup tetap layar penuh di atas menu).
+  - Saat popup terbuka, menekan menu lain menutup popup lalu pindah halaman; "Add trade" ditandai putih selama popup tambah terbuka.
+- File berubah: index.html, sw.js (cache edge-journal-v20), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.10 — Perbaikan Symbol & Tanggal di Tambah trade, simbol GOLD, form Add account di Profil
+- Perbaikan: pilihan Symbol dan Tanggal & waktu di popup Tambah trade / Edit tidak muncul karena tertutup popup layar penuh. Sekarang daftar pilihan dan kalender tampil di atas popup (juga untuk Currency / First deposit di Add account).
+- Symbol baru GOLD (untuk broker yang tidak memakai XAUUSD): ukuran kontrak 100, 1 pip = 0.10, hitungan P&L, pips, dan statistik sama dengan XAUUSD.
+- Profil → Account management → Add account: label di atas kolom, kolom isi, tanggal, mata uang, dan tombol "Create account" bergaya sama seperti popup (lebih rapi).
+- File berubah: index.html, sw.js (cache edge-journal-v21), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt

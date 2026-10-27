@@ -397,9 +397,25 @@ html,body{background:#090d18}
 .dd-crumbs .dd-lock.on{color:#f5b84b}
 .dd-title{margin-top:16px!important}
 /* ===== v2.8.8 — Menu bawah: kotak biru hanya muncul saat ditekan, hilang begitu jari dilepas ===== */
-.bottom-nav .nav-item{margin:5px 3px!important;padding:8px 2px 6px!important;border:1px solid transparent!important;border-radius:14px!important;transition:none!important;-webkit-tap-highlight-color:transparent}
-.bottom-nav .nav-item:active{background:#1d2c57!important;border-color:#4a68c8!important;box-shadow:0 0 0 1px #4a68c8,0 6px 18px #1d2c5766!important;color:#fff!important;transform:scale(.95)!important;opacity:1!important}
-.bottom-nav .nav-item:active svg{color:#fff!important}
+.bottom-nav .nav-item{margin:0!important;padding:10px 2px 8px!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;transition:none!important;-webkit-tap-highlight-color:transparent}
+/* ===== v2.8.9 — Menu bawah tanpa animasi (hanya ikon + tulisan), tetap tampil di atas pop up ===== */
+.bottom-nav .nav-item:active,.bottom-nav .nav-item:active svg,.bottom-nav .nav-item:active span{background:none!important;border:0!important;box-shadow:none!important;transform:none!important;opacity:1!important;animation:none!important}
+.bottom-nav{z-index:100000!important}
+.modal-backdrop.fs{bottom:calc(var(--nav-h,75px))!important;height:auto!important;z-index:200}
+.modal.fs{padding-bottom:28px!important}
+.acct-inline{display:block}
+.acct-inline-body{width:100%}
+.acct-inline .modal-head{margin-bottom:14px}
+/* ===== v2.8.9 — pilihan Symbol / Tanggal tampil di atas popup layar penuh; form Account management di Profil sama cantik dengan popup ===== */
+.modal-backdrop.sheet-layer{z-index:99000!important}
+.acct-inline label,.acct-inline form>label{display:block;color:#9aa8c0;font-size:10px}
+.acct-inline label{margin-bottom:13px}
+.acct-inline input,.acct-inline textarea,.acct-inline select{display:block;width:100%;margin-top:6px;background:#0c1322;border:1px solid #26334e;color:#edf2ff;border-radius:9px;padding:10px 11px;outline:none}
+.acct-inline input:focus,.acct-inline textarea:focus{border-color:#597cff}
+.acct-inline input[type=number]{font-family:'DM Mono',monospace}
+.acct-inline .as-edit-row input{margin-top:8px}
+.acct-inline form>.primary-btn{width:100%;justify-content:center;margin-top:6px}
+.acct-inline .form-grid{margin-top:4px}
 /* halaman Tambah trade: gaya kolom form sama seperti saat masih berbentuk pop up */
 .add-page textarea{display:block;width:100%;min-height:70px;resize:vertical;margin-top:6px;background:#0c1322;border:1px solid #26334e;color:#edf2ff;border-radius:9px;padding:10px 11px;outline:none;font-family:inherit;font-size:13px}
 .add-page textarea:focus{border-color:#597cff}
@@ -454,7 +470,7 @@ window.__hideSplash=function(){
 window.addEventListener("error",function(e){var b=document.getElementById("boot");if(b&&!window.__appMounted)b.textContent="Error: "+e.message;});
 "use strict";
 const { useEffect, useMemo, useRef, useState } = React;
-const APP_VERSION = '2.8.8';
+const APP_VERSION = '2.8.10';
 const ICONS = { "CandlePlus": [["path", { "d": "M5 3v3" }], ["rect", { "x": 3, "y": 6, "width": 4, "height": 11, "rx": 1 }], ["path", { "d": "M5 17v3" }], ["path", { "d": "M12 8v2" }], ["rect", { "x": 10, "y": 10, "width": 4, "height": 7, "rx": 1 }], ["path", { "d": "M12 17v2" }], ["path", { "d": "M19 3v6" }], ["path", { "d": "M16 6h6" }]], "Activity": [["polyline", { "points": "22 12 18 12 15 21 9 3 6 12 2 12" }]], "ArrowDownRight": [["path", { "d": "M7 7l10 10" }], ["path", { "d": "M17 7v10H7" }]], "ArrowUpRight": [["path", { "d": "M7 17L17 7" }], ["path", { "d": "M7 7h10v10" }]], "BarChart3": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M18 17V9" }], ["path", { "d": "M13 17V5" }], ["path", { "d": "M8 17v-3" }]], "BookOpen": [["path", { "d": "M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" }], ["path", { "d": "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" }]], "CalendarDays": [["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M16 2v4" }], ["path", { "d": "M8 2v4" }], ["path", { "d": "M3 10h18" }], ["path", { "d": "M8 14h.01" }], ["path", { "d": "M12 14h.01" }], ["path", { "d": "M16 14h.01" }], ["path", { "d": "M8 18h.01" }], ["path", { "d": "M12 18h.01" }], ["path", { "d": "M16 18h.01" }]], "Camera": [["path", { "d": "M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z" }], ["circle", { "cx": 12, "cy": 13, "r": 3 }]], "ChevronDown": [["path", { "d": "M6 9l6 6 6-6" }]], "ChevronLeft": [["path", { "d": "M15 18l-6-6 6-6" }]], "ChevronRight": [["path", { "d": "M9 18l6-6-6-6" }]], "CircleHelp": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["path", { "d": "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" }], ["path", { "d": "M12 17h.01" }]], "ClipboardPaste": [["path", { "d": "M15 2H9a1 1 0 0 0-1 1v2c0 .6.4 1 1 1h6c.6 0 1-.4 1-1V3c0-.6-.4-1-1-1z" }], ["path", { "d": "M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2" }]], "Cloud": [["path", { "d": "M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z" }]], "Download": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M7 10l5 5 5-5" }], ["path", { "d": "M12 15V3" }]], "FileJson": [["path", { "d": "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" }], ["path", { "d": "M14 2v6h6" }], ["path", { "d": "M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1" }], ["path", { "d": "M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1" }]], "Filter": [["path", { "d": "M22 3H2l8 9.46V19l4 2v-8.54z" }]], "LineChart": [["path", { "d": "M3 3v18h18" }], ["path", { "d": "M19 9l-5 5-4-4-3 3" }]], "Plus": [["path", { "d": "M5 12h14" }], ["path", { "d": "M12 5v14" }]], "Search": [["circle", { "cx": 11, "cy": 11, "r": 8 }], ["path", { "d": "M21 21l-4.3-4.3" }]], "Settings2": [["path", { "d": "M20 7h-9" }], ["path", { "d": "M14 17H5" }], ["circle", { "cx": 17, "cy": 17, "r": 3 }], ["circle", { "cx": 7, "cy": 7, "r": 3 }]], "Share2": [["circle", { "cx": 18, "cy": 5, "r": 3 }], ["circle", { "cx": 6, "cy": 12, "r": 3 }], ["circle", { "cx": 18, "cy": 19, "r": 3 }], ["path", { "d": "M8.59 13.51l6.83 3.98" }], ["path", { "d": "M15.41 6.51l-6.82 3.98" }]], "SlidersHorizontal": [["path", { "d": "M21 4h-7" }], ["path", { "d": "M10 4H3" }], ["path", { "d": "M21 12h-9" }], ["path", { "d": "M8 12H3" }], ["path", { "d": "M21 20h-5" }], ["path", { "d": "M12 20H3" }], ["path", { "d": "M14 2v4" }], ["path", { "d": "M8 10v4" }], ["path", { "d": "M16 18v4" }]], "Target": [["circle", { "cx": 12, "cy": 12, "r": 10 }], ["circle", { "cx": 12, "cy": 12, "r": 6 }], ["circle", { "cx": 12, "cy": 12, "r": 2 }]], "Trash2": [["path", { "d": "M3 6h18" }], ["path", { "d": "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" }], ["path", { "d": "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" }], ["path", { "d": "M10 11v6" }], ["path", { "d": "M14 11v6" }]], "TrendingDown": [["path", { "d": "M22 17l-8.5-8.5-5 5L2 7" }], ["path", { "d": "M16 17h6v-6" }]], "TrendingUp": [["path", { "d": "M22 7l-8.5 8.5-5-5L2 17" }], ["path", { "d": "M16 7h6v6" }]], "Upload": [["path", { "d": "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" }], ["path", { "d": "M17 8l-5-5-5 5" }], ["path", { "d": "M12 3v12" }]], "UserRound": [["circle", { "cx": 12, "cy": 8, "r": 5 }], ["path", { "d": "M20 21a8 8 0 0 0-16 0" }]], "Wallet": [["path", { "d": "M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" }], ["path", { "d": "M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" }]], "X": [["path", { "d": "M18 6L6 18" }], ["path", { "d": "M6 6l12 12" }]], "Zap": [["path", { "d": "M13 2L3 14h9l-1 8 10-12h-9l1-8z" }]] };
 Object.assign(ICONS, {
     "Calendar": [["path", { "d": "M8 2v4" }], ["path", { "d": "M16 2v4" }], ["rect", { "x": 3, "y": 4, "width": 18, "height": 18, "rx": 2 }], ["path", { "d": "M3 10h18" }]],
@@ -575,7 +591,9 @@ function notify(msg) {
 function askConfirm(msg, okLabel = 'Ya, hapus', danger = true) {
     return new Promise(resolve => {
         const o = document.createElement('div');
-        o.style.cssText = 'position:fixed;inset:0;background:#10182a;z-index:99999;display:flex;align-items:center;justify-content:center;padding:max(24px,env(safe-area-inset-top,0px)) 24px max(24px,env(safe-area-inset-bottom,0px))';
+        o.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:var(--nav-h,75px);background:#10182a;z-index:99999;display:flex;align-items:center;justify-content:center;padding:max(24px,env(safe-area-inset-top,0px)) 24px 24px';
+        o.setAttribute('data-confirm', '1');
+        o.addEventListener('confirm-cancel', () => { o.remove(); resolve(false); });
         const b = document.createElement('div');
         b.style.cssText = 'max-width:420px;width:100%;color:#eef2ff;font-size:15px;line-height:1.6;text-align:center';
         const p = document.createElement('p');
@@ -613,7 +631,7 @@ async function saveFile(filename, text, mime) {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-const CONTRACT_SIZES = { XAUUSD: 100, EURUSD: 100000, GBPUSD: 100000, USDJPY: 100000, GBPJPY: 100000, AUDUSD: 100000, USDCAD: 100000, USDCHF: 100000, NAS100: 1, BTCUSD: 1 };
+const CONTRACT_SIZES = { XAUUSD: 100, GOLD: 100, EURUSD: 100000, GBPUSD: 100000, USDJPY: 100000, GBPJPY: 100000, AUDUSD: 100000, USDCAD: 100000, USDCHF: 100000, NAS100: 1, BTCUSD: 1 };
 const SYMBOLS = Object.keys(CONTRACT_SIZES);
 const money = (n, currency = 'USD') => new Intl.NumberFormat('en-US', { style: 'currency', currency, minimumFractionDigits: 0, maximumFractionDigits: 2 }).format(Number(n) || 0);
 const number = n => new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(Number(n) || 0);
@@ -724,6 +742,7 @@ function App() {
     };
     useEffect(() => { if (window.__hideSplash) window.__hideSplash(); }, []);
     useEffect(() => { setExpanded(null); }, [tab]);
+    useEffect(() => { const f = () => { const n = document.querySelector('.bottom-nav'); if (n) document.documentElement.style.setProperty('--nav-h', n.offsetHeight + 'px'); }; f(); window.addEventListener('resize', f); return () => window.removeEventListener('resize', f); }, []);
     const activeAccount = accounts.find(a => a.id === activeAccountId) || accounts[0];
     const trades = (activeAccount === null || activeAccount === void 0 ? void 0 : activeAccount.trades) || [];
     function persist(nextAccounts = accounts, nextActive = activeAccountId) { setAccounts(nextAccounts); setActiveAccountId(nextActive); saveStore(nextActive, nextAccounts); }
@@ -737,7 +756,9 @@ function App() {
     function recordCapital(data) { const amount = Number(data.amount) || 0; if (amount <= 0)
         return; const delta = data.type === 'withdraw' ? -amount : amount; const updated = accounts.map(a => a.id === activeAccountId ? { ...a, balance: Number(a.balance || 0) + delta, capitalHistory: [...(a.capitalHistory || []), { id: uid('capital'), type: data.type, amount, date: data.date, note: data.note || '' }] } : a); persist(updated); }
     function updateAccount(patch) { persist(accounts.map(a => a.id === activeAccountId ? { ...a, ...patch } : a)); }
-    function openAdd() { setShowAdd(true); }
+    function closePopups() { setShowAdd(false); setEditingTrade(null); setClosingTrade(null); setShowAccount(false); setAccountMode('manage'); document.querySelectorAll('[data-confirm]').forEach(n => n.dispatchEvent(new Event('confirm-cancel'))); }
+    function goTab(t) { closePopups(); setTab(t); window.scrollTo(0, 0); }
+    function openAdd() { setEditingTrade(null); setClosingTrade(null); setShowAdd(true); }
     function addTrade(data) { const trade = { ...data, id: uid('trade'), entry: Number(data.entry), exit: data.exit ? Number(data.exit) : null, lots: Number(data.lots) || 0, sl: data.sl ? Number(data.sl) : null, tp: data.tp ? Number(data.tp) : null, fees: Number(data.fees) || 0, status: data.exit ? 'closed' : 'open', pnl: data.exit ? pnlFor(data, data.exit) : 0, review: data.review || '', screenshots: data.screenshots || [] }; persistTrades([trade, ...trades]); setShowAdd(false); setTab('journal'); }
     function closeTrade(data) { const trade = trades.find(t => t.id === data.tradeId); if (!trade)
         return; const updated = { ...trade, exit: Number(data.exit), closeDate: data.closeDate, fees: Number(data.fees) || 0, exitMethod: data.exitMethod, status: 'closed', pnl: pnlFor({ ...trade, fees: Number(data.fees) || 0 }, Number(data.exit)), review: data.review || '' }; persistTrades(trades.map(t => t.id === trade.id ? updated : t)); setClosingTrade(null); setExpanded(trade.id); }
@@ -779,10 +800,10 @@ function App() {
         React.createElement("div", { className: "desktop-layout" },
             React.createElement("aside", { className: "side-nav" },
                 React.createElement("div", { className: "side-nav-title" }, "WORKSPACE"),
-                React.createElement(NavItem, { active: tab === 'performance', onClick: () => setTab('performance'), icon: React.createElement(BarChart3, null), label: "Performance" }),
-                React.createElement(NavItem, { active: tab === 'journal', onClick: () => setTab('journal'), icon: React.createElement(BookOpen, null), label: "My Journal" }),
-                React.createElement(NavItem, { active: tab === 'tools', onClick: () => setTab('tools'), icon: React.createElement(SlidersHorizontal, null), label: "Tools" }),
-                React.createElement(NavItem, { active: tab === 'account', onClick: () => setTab('account'), icon: React.createElement(UserRound, null), label: "Profil" }),
+                React.createElement(NavItem, { active: tab === 'performance' && !showAdd, onClick: () => goTab('performance'), icon: React.createElement(BarChart3, null), label: "Performance" }),
+                React.createElement(NavItem, { active: tab === 'journal' && !showAdd, onClick: () => goTab('journal'), icon: React.createElement(BookOpen, null), label: "My Journal" }),
+                React.createElement(NavItem, { active: tab === 'tools' && !showAdd, onClick: () => goTab('tools'), icon: React.createElement(SlidersHorizontal, null), label: "Tools" }),
+                React.createElement(NavItem, { active: tab === 'account' && !showAdd, onClick: () => goTab('account'), icon: React.createElement(UserRound, null), label: "Profil" }),
                 React.createElement("div", { className: "side-nav-foot" },
                     React.createElement("span", null, "ACTIVE ACCOUNT"),
                     React.createElement("strong", null, activeAccount.name),
@@ -790,14 +811,14 @@ function App() {
             React.createElement("main", { className: "main-content" },
                 tab === 'performance' && React.createElement(Performance, { onSelectDate: chooseCalendarDate, onWallet: () => { setAccountMode('capital'); setShowAccount(true); }, account: activeAccount, trades: trades, period: period, setPeriod: setPeriod, customStart: customStart, customEnd: customEnd, setCustomStart: setCustomStart, setCustomEnd: setCustomEnd }),
                 tab === 'journal' && React.createElement(Journal, { account: activeAccount, trades: trades, filters: journalFilters, setFilters: setJournalFilters, expanded: expanded, setExpanded: setExpanded, onAdd: openAdd, onDelete: deleteTrade, onClose: setClosingTrade, onEdit: setEditingTrade }),
-                tab === 'account' && React.createElement(AccountPage, { account: activeAccount, trades: trades, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson, onManage: mode => { setAccountMode(mode); setShowAccount(true); } }),
+                tab === 'account' && React.createElement(AccountPage, { accounts: accounts, activeAccount: activeAccount, onSelect: selectAccount, onCreate: addAccount, onDelete: deleteAccount, onUpdate: updateAccount, onCapital: recordCapital, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson }),
                 tab === 'tools' && React.createElement(Tools, { account: activeAccount, trades: trades, onAdd: openAdd, onExport: exportCsv, onBackup: backupJson, onRestore: restoreJson, onNewAccount: () => setShowAccount(true) }))),
         React.createElement("nav", { className: "bottom-nav" },
-            React.createElement(NavItem, { active: tab === 'performance', onClick: () => setTab('performance'), icon: React.createElement(BarChart3, null), label: "Performance" }),
-            React.createElement(NavItem, { active: tab === 'journal', onClick: () => setTab('journal'), icon: React.createElement(BookOpen, null), label: "My Journal" }),
-            React.createElement("button", { type: "button", className: "nav-item nav-add", "aria-label": "Tambah posisi", onClick: openAdd }, React.createElement(CandlePlus, null), React.createElement("span", null, "Add trade")),
-            React.createElement(NavItem, { active: tab === 'tools', onClick: () => setTab('tools'), icon: React.createElement(SlidersHorizontal, null), label: "Tools" }),
-            React.createElement(NavItem, { active: tab === 'account', onClick: () => setTab('account'), icon: React.createElement(UserRound, null), label: "Profil" })),
+            React.createElement(NavItem, { active: tab === 'performance' && !showAdd, onClick: () => goTab('performance'), icon: React.createElement(BarChart3, null), label: "Performance" }),
+            React.createElement(NavItem, { active: tab === 'journal' && !showAdd, onClick: () => goTab('journal'), icon: React.createElement(BookOpen, null), label: "My Journal" }),
+            React.createElement("button", { type: "button", className: showAdd ? "nav-item nav-add active" : "nav-item nav-add", "aria-label": "Tambah posisi", onClick: openAdd }, React.createElement(CandlePlus, null), React.createElement("span", null, "Add trade")),
+            React.createElement(NavItem, { active: tab === 'tools' && !showAdd, onClick: () => goTab('tools'), icon: React.createElement(SlidersHorizontal, null), label: "Tools" }),
+            React.createElement(NavItem, { active: tab === 'account' && !showAdd, onClick: () => goTab('account'), icon: React.createElement(UserRound, null), label: "Profil" })),
         showAdd && React.createElement(AddTradeModal, { account: activeAccount, onClose: () => setShowAdd(false), onSave: addTrade }),
         editingTrade && React.createElement(AddTradeModal, { initial: editingTrade, account: activeAccount, onClose: () => setEditingTrade(null), onSave: updateTrade }),
         closingTrade && React.createElement(CloseTradeModal, { trade: closingTrade, onClose: () => setClosingTrade(null), onSave: closeTrade }),
@@ -807,19 +828,11 @@ function App() {
 function NavItem({ active, onClick, icon, label }) { return React.createElement("button", { type: "button", className: active ? 'nav-item active' : 'nav-item', "aria-current": active ? 'page' : undefined, onClick: onClick },
     icon,
     React.createElement("span", null, label)); }
-function AccountPage({ account, trades, onManage, onExport, onBackup, onRestore }) {
-    const btn = (label, mode) => React.createElement("button", { className: "secondary-btn", onClick: () => onManage(mode) }, label);
+function AccountPage({ accounts, activeAccount, onSelect, onCreate, onDelete, onUpdate, onCapital, onExport, onBackup, onRestore }) {
     return React.createElement("section", null,
         React.createElement(PageHeading, { eyebrow: "PROFIL / PENGATURAN", title: "Profil", description: "Akun trading, sinkron online, backup, dan export." }),
         React.createElement("div", { className: "tool-grid" },
-            React.createElement("div", { className: "tool-card" },
-                React.createElement("div", { className: "tool-head" },
-                    React.createElement("div", { className: "tool-icon orange" }, React.createElement(UserRound, null)),
-                    React.createElement("div", null,
-                        React.createElement("h2", null, "Akun trading"),
-                        React.createElement("p", null, `${account.name} · ${money(account.balance, account.currency)} · ${trades.length} trade`))),
-                React.createElement("div", { className: "button-row" },
-                    btn('Kelola / ganti akun', 'manage'), btn('Deposit / WD', 'capital'), btn('Tambah akun', 'new'), btn('Backup', 'backup'))),
+            React.createElement(AccountModal, { inline: true, key: activeAccount.id + ':' + accounts.length, accounts: accounts, activeAccount: activeAccount, onSelect: onSelect, onCreate: onCreate, onDelete: onDelete, onUpdate: onUpdate, onCapital: onCapital, onBackup: onBackup, onRestore: onRestore, onExport: onExport }),
             React.createElement(CloudSyncCard, null),
         React.createElement("div", { className: "tool-card" },
             React.createElement("div", { className: "tool-head" },
@@ -844,7 +857,7 @@ function AccountPage({ account, trades, onManage, onExport, onBackup, onRestore 
                     React.createElement("h2", null, "Export & share"),
                     React.createElement("p", null,
                         "Bagikan jurnal ",
-                        account.name,
+                        activeAccount.name,
                         " ke Excel atau spreadsheet."))),
             React.createElement("button", { className: "secondary-btn", onClick: onExport },
                 React.createElement(Download, { size: 16 }),
@@ -870,7 +883,7 @@ function TSelect({ value, onChange, options, title }) {
         React.createElement("button", { type: "button", className: "tsel", onClick: () => setOpen(true) },
             React.createElement("span", null, cur.l),
             React.createElement(ChevronDown, { size: 15 })),
-        open && ReactDOM.createPortal(React.createElement("div", { className: "modal-backdrop center top", onClick: e => { if (e.target === e.currentTarget)
+        open && ReactDOM.createPortal(React.createElement("div", { className: "modal-backdrop center top sheet-layer", onClick: e => { if (e.target === e.currentTarget)
                 setOpen(false); } },
             React.createElement("div", { className: "tsel-sheet" },
                 React.createElement("div", { className: "tsel-title" }, title || 'Pilih'),
@@ -896,7 +909,7 @@ function DateField({ value, onChange, withTime, min }) {
         React.createElement("button", { type: "button", className: "dfield", onClick: openIt },
             React.createElement("span", null, show),
             React.createElement(CalendarDays, { size: 16 })),
-        open && ReactDOM.createPortal(React.createElement("div", { className: "modal-backdrop center top", onClick: e => { if (e.target === e.currentTarget)
+        open && ReactDOM.createPortal(React.createElement("div", { className: "modal-backdrop center top sheet-layer", onClick: e => { if (e.target === e.currentTarget)
                 setOpen(false); } },
             React.createElement("div", { className: "dp-sheet" },
                 React.createElement("div", { className: "dp-head" },
@@ -1112,7 +1125,7 @@ function drawShareImage(d) {
     t('Dibuat dengan Edge Journal', 540, 1820, 26, '#5f6d8c', 500, 'center');
     return c;
 }
-function pipSizeOf(sym) { const u = String(sym || '').toUpperCase(); if (u.includes('XAU'))
+function pipSizeOf(sym) { const u = String(sym || '').toUpperCase(); if (u.includes('XAU') || u === 'GOLD')
     return .1; if (u.includes('XAG'))
     return .01; if (u.includes('JPY'))
     return .01; if (u.includes('BTC') || u.includes('ETH') || u.includes('NAS') || u.includes('US30') || u.includes('SPX'))
@@ -1238,7 +1251,7 @@ function AdvancedStats({ account, filtered, total, maxDd, hwm, view, part = 'all
             rows.map(([l, v, t]) => React.createElement("div", { className: "adv-row", key: l },
                 React.createElement("span", null, l),
                 React.createElement("b", { className: t }, v))),
-            React.createElement("p", { className: "pe-note adv-note" }, "Pips dihitung dari harga entry ke harga close: XAUUSD 1 pip = 0.10 poin harga, pair JPY 0.01, pair lain 0.0001, NAS100 dan BTCUSD 1 poin. Average/Max TP dari trade menang, SL dari trade kalah. Avg Hold dari waktu buka sampai close. Bulan mengikuti pilihan di Kalender dan Monthly gain."));
+            React.createElement("p", { className: "pe-note adv-note" }, "Pips dihitung dari harga entry ke harga close: XAUUSD / GOLD 1 pip = 0.10 poin harga, pair JPY 0.01, pair lain 0.0001, NAS100 dan BTCUSD 1 poin. Average/Max TP dari trade menang, SL dari trade kalah. Avg Hold dari waktu buka sampai close. Bulan mengikuti pilihan di Kalender dan Monthly gain."));
     if (part === 'title')
         return React.createElement("div", { className: "adv adv-title-only" }, title);
     if (part === 'card')
@@ -2452,7 +2465,7 @@ function AdjustRiskModal({ calc, suggestedLots, onClose, onApply }) { const [ris
                 React.createElement("span", null, "Contract"),
                 React.createElement("strong", null, contractSize(calc.symbol).toLocaleString()))),
         React.createElement("button", { className: "primary-btn", onClick: () => onApply(lots ? lots.toFixed(2) : calc.lots) }, "Apply lot size"))); }
-function AccountModal({ initialMode = 'manage', accounts, activeAccount, onClose, onSelect, onCreate, onDelete, onUpdate, onCapital, onBackup, onRestore, onExport }) {
+function AccountModal({ inline = false, initialMode = 'manage', accounts, activeAccount, onClose, onSelect, onCreate, onDelete, onUpdate, onCapital, onBackup, onRestore, onExport }) {
     const [mode, setMode] = useState(initialMode);
     const [editing, setEditing] = useState(false);
     const [nameDraft, setNameDraft] = useState('');
@@ -2480,14 +2493,16 @@ function AccountModal({ initialMode = 'manage', accounts, activeAccount, onClose
         setEditing(false);
         notify('Nama akun diperbarui.');
     } }); }
-    return React.createElement("div", { className: "modal-backdrop center", onClick: e => { if (e.target === e.currentTarget)
-            onClose(); } },
-        React.createElement("div", { className: "modal wide-modal" },
+    const rootProps = inline ? { className: "tool-card acct-inline" } : { className: "modal-backdrop center", onClick: e => { if (e.target === e.currentTarget)
+            onClose(); } };
+    const innerProps = inline ? { className: "acct-inline-body" } : { className: "modal wide-modal" };
+    return React.createElement("div", rootProps,
+        React.createElement("div", innerProps,
             React.createElement("div", { className: "modal-head" },
                 React.createElement("div", null,
                     React.createElement("p", { className: "eyebrow" }, "ACCOUNT / SETTINGS"),
                     React.createElement("h2", null, "Account management")),
-                React.createElement("button", { className: "icon-btn", onClick: onClose },
+                !inline && React.createElement("button", { className: "icon-btn", onClick: onClose },
                     React.createElement(X, { size: 19 }))),
             React.createElement("div", { className: "account-tabs" },
                 React.createElement("button", { className: mode === 'manage' ? 'active' : '', onClick: () => setMode('manage') }, "Accounts"),
