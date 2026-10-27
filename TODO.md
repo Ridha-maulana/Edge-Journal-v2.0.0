@@ -299,3 +299,8 @@
 - Advanced Statistics → kartu Profitability: daftar statistik sekarang berupa slide yang digeser ke samping (maksimal 10 data per slide, dibagi rata: 8/8/8/7). Garis penanda slide di atas (kuning), nomor slide dan tombol "GESER ›" di bawah; garis penanda juga bisa diketuk.
 - Menu bawah: otomatis tersembunyi saat halaman di-scroll ke bawah dan muncul lagi hanya setelah kembali ke kepala halaman. Tetap tampil saat popup Tambah/Edit/Hapus terbuka dan saat pindah halaman.
 - File berubah: index.html, sw.js (cache edge-journal-v22), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt
+
+## v2.8.12 — Active account di atas, menu Performance = kembali ke halaman utama
+- Profil → Account management → tab Accounts: kartu ACTIVE ACCOUNT sekarang di paling atas, daftar akun di bawahnya (berlaku juga di popup Account management).
+- Performance: saat sedang di Advanced Statistics (atau Trader DNA), cukup tekan menu "Performance" di bar bawah sekali untuk kembali ke halaman utama Performance (tanpa tombol kembali di atas).
+- File berubah: index.html, sw.js (cache edge-journal-v23), TODO.md, UPLOAD_ONLY_CHANGED_FILES.txt

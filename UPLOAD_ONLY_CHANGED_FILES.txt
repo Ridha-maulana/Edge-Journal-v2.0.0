@@ -1,4 +1,4 @@
-Edge Journal v2.8.11 — file yang berubah (upload ke GitHub, timpa yang lama):
+Edge Journal v2.8.12 — file yang berubah (upload ke GitHub, timpa yang lama):
 1. index.html
 2. sw.js
 3. TODO.md
